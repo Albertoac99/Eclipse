@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<game>
+        	
+    
+    <jugador numero="8">
+                		
+        
+        <nombre>Pepe</nombre>
+                		
+        
+        <apellidos>López Gutiérrez</apellidos>
+                		
+        
+        <nick>Batman</nick>
+                		
+        
+        <puntos>1200</puntos>
+                	
+    
+    </jugador>
+        	
+    
+    <entrenador colegiado="120">
+                		
+        
+        <nombre>Manuel</nombre>
+                		
+        
+        <apellidos>Soto Pineda</apellidos>
+                		
+        
+        <edad>54</edad>
+                	
+    
+    </entrenador>
+        	
+    
+    <entrenador colegiado="170">
+                		
+        
+        <nombre>Antonio</nombre>
+                		
+        
+        <apellidos>Esteban Guzmán</apellidos>
+                		
+        
+        <edad>40</edad>
+                	
+    
+    </entrenador>
+        	
+    
+    <jugador numero="9">
+                		
+        
+        <nombre>María</nombre>
+                		
+        
+        <apellidos>Cantilejo Gómez</apellidos>
+                		
+        
+        <nick>Sevillana</nick>
+                		
+        
+        <puntos>1475</puntos>
+                	
+	
+    
+    </jugador>
+        	
+    
+    <jugador numero="10">
+                		
+        
+        <nombre>Julián</nombre>
+                		
+        
+        <apellidos>Torres Martínez</apellidos>
+                		
+        
+        <nick>Superman</nick>
+                		
+        
+        <puntos>831</puntos>
+                	
+	
+    
+    </jugador>
+        	
+    
+    <entrenador colegiado="123">
+                		
+        
+        <nombre>Juan</nombre>
+                		
+        
+        <apellidos>López Márquez</apellidos>
+                		
+        
+        <edad>47</edad>
+                	
+    
+    </entrenador>
+        
+    
+    <jugador numero="123">
+                
+        <nombre>Miguelito</nombre>
+                
+        <apellidos>Perez Diaz</apellidos>
+                
+        <nick>Alberto</nick>
+                
+        <puntos>1200</puntos>
+            
+    </jugador>
+    
+    <jugador numero="123">
+        <nombre>Miguelito</nombre>
+        <apellidos>Perez Diaz</apellidos>
+        <nick>Alberto</nick>
+        <puntos>1200</puntos>
+    </jugador>
+</game>

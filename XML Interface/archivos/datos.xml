@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persona>
+
+		<alumno mat="1">
+		
+				<nombre>Alberto</nombre>
+				<apellidos>Aranda Castro</apellidos>	
+				
+		</alumno>
+		<alumno mat ="2">
+		
+				<nombre>Manuel</nombre>
+				<apellidos>Lobato Guzmán</apellidos>	
+				
+		</alumno>
+		<alumno mat="3">
+		
+				<nombre>Alejandro</nombre>
+				<apellidos>Esteban Díaz</apellidos>	
+				
+		</alumno>
+		<alumno mat="4">
+		
+				<nombre>David</nombre>
+				<apellidos>Yuste Gutiérrez</apellidos>	
+				
+		</alumno>
+		<alumno mat = "5">
+		
+				<nombre>Jesús</nombre>
+				<apellidos>López Molina</apellidos>	
+				
+		</alumno>
+		<alumno mat="6">
+		
+				<nombre>abc</nombre>
+				<apellidos>abc abc</apellidos>	
+				
+		</alumno>
+		<alumno mat ="7">
+		
+				<nombre>def</nombre>
+				<apellidos>def def</apellidos>	
+				
+		</alumno>
+		<alumno mat="8">
+		
+				<nombre>ghi</nombre>
+				<apellidos>ghi ghi</apellidos>	
+				
+		</alumno>
+		<alumno mat="9">
+		
+				<nombre>jkl</nombre>
+				<apellidos>jkl jkl</apellidos>	
+				
+		</alumno>
+		<alumno mat = "10">
+		
+				<nombre>mnñ</nombre>
+				<apellidos>mnñ mnñ</apellidos>	
+				
+		</alumno>
+		<alumno mat="11">
+		
+				<nombre>opq</nombre>
+				<apellidos>opq opq</apellidos>	
+				
+		</alumno>
+		<alumno mat ="12">
+		
+				<nombre>rst</nombre>
+				<apellidos>rst rst</apellidos>	
+				
+		</alumno>
+		<alumno mat="13">
+		
+				<nombre>uvw</nombre>
+				<apellidos>uvw uvw</apellidos>	
+				
+		</alumno>
+		<alumno mat="14">
+		
+				<nombre>xyz</nombre>
+				<apellidos>xyz xyz</apellidos>	
+				
+		</alumno>
+		<alumno mat = "15">
+		
+				<nombre>final</nombre>
+				<apellidos>final final</apellidos>	
+				
+		</alumno>
+
+
+
+</persona>
