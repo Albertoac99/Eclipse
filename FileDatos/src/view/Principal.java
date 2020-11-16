@@ -15,7 +15,7 @@ public class Principal {
 		
 
 		GestFchXML fch = new GestFchXML(FILE_NAME);
-		
+		/*
 		List<Jugador> jugadores = fch.getJugadores();
 		
 		for(Jugador j : jugadores) {
@@ -28,7 +28,7 @@ public class Principal {
 		for(Entrenador e : entrenadores) {
 			System.out.println(e);
 		}
-		
+		*/
 		fch.addNodeJugador( new Jugador(123,"Miguelito","Perez Diaz", "Alberto",1200));
 		
 		List<Jugador> jugadores2 = fch.getJugadores();
