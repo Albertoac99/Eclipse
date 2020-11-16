@@ -1,0 +1,10 @@
+Funcionalidades del menú:
+
+ -> Abrir: Abre un archivo de su equipo
+ -> Guardar: Guarda un archivo sobreescribiendo los datos
+ -> Guardar Como: Guarda un archivo en la ruta y con el nombre que desee
+ 
+ -> Colores: Se seleccionará el color que desea tanto de letra como de fondo
+ -> Fuente: Se seleccionará la fuente, el tamaño y si desea negrita, cursiva...
+ 
+ -> Acerca de: Se muestra información relacionada con el programa y el autor.

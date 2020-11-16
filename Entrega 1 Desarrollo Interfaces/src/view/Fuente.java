@@ -8,24 +8,28 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.ContFuente;
+
 import java.awt.GridLayout;
+import javax.swing.JScrollPane;
+import javax.swing.JList;
+import javax.swing.AbstractListModel;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Fuente extends JDialog {
-
+	public static JLabel lblEjemplo;
 	private final JPanel contentPanel = new JPanel();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			Fuente dialog = new Fuente();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Create the dialog.
@@ -51,8 +55,29 @@ public class Fuente extends JDialog {
 				}
 			}
 			{
-				JPanel panel_1 = new JPanel();
-				panel.add(panel_1, BorderLayout.CENTER);
+				JScrollPane scrollPane = new JScrollPane();
+				panel.add(scrollPane, BorderLayout.CENTER);
+				{
+					JList list = new JList();
+					list.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							ContFuente.CambiarFuente(list);
+						}
+					});
+					
+					list.setFont(new Font("Tahoma", Font.PLAIN, 11));
+					list.setModel(new AbstractListModel() {
+						String[] values = new String[] {"Arial", "Courier", "Comics Sans", "Tahoma", "Symbol", "Pristina", "Ravie", "Georgia", "Gigi", "Calibri", "Cambria", "Magneto", "Marlett"};
+						public int getSize() {
+							return values.length;
+						}
+						public Object getElementAt(int index) {
+							return values[index];
+						}
+					});
+					scrollPane.setViewportView(list);
+				}
 			}
 		}
 		{
@@ -72,7 +97,28 @@ public class Fuente extends JDialog {
 			{
 				JPanel panel_1 = new JPanel();
 				panel.add(panel_1, BorderLayout.CENTER);
-				panel_1.setLayout(new GridLayout(1, 0, 0, 0));
+				panel_1.setLayout(new GridLayout(4, 0, 0, 0));
+				{
+					JCheckBox chckbxNormal = new JCheckBox("Normal");
+					panel_1.add(chckbxNormal);
+				}
+				{
+					JCheckBox chckbxNegrita = new JCheckBox("Negrita");
+					chckbxNegrita.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							ContFuente.CambiarTipo(chckbxNegrita);
+						}
+					});
+					panel_1.add(chckbxNegrita);
+				}
+				{
+					JCheckBox chckbxNewCheckBox = new JCheckBox("Cursiva");
+					panel_1.add(chckbxNewCheckBox);
+				}
+				{
+					JCheckBox chckbxSubrallado = new JCheckBox("Subrayado");
+					panel_1.add(chckbxSubrallado);
+				}
 			}
 		}
 		{
@@ -92,6 +138,16 @@ public class Fuente extends JDialog {
 			{
 				JPanel panel_1 = new JPanel();
 				panel.add(panel_1, BorderLayout.CENTER);
+				{
+					JComboBox comboBox = new JComboBox();
+					comboBox.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							ContFuente.CambiarTamaño(comboBox);
+						}
+					});
+					comboBox.setModel(new DefaultComboBoxModel(new String[] {"10", "12", "15", "18", "20", "24"}));
+					panel_1.add(comboBox);
+				}
 			}
 		}
 		{
@@ -103,12 +159,23 @@ public class Fuente extends JDialog {
 				buttonPane.add(panel, BorderLayout.EAST);
 				{
 					JButton okButton = new JButton("OK");
+					okButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							
+							dispose();
+						}
+					});
 					panel.add(okButton);
 					okButton.setActionCommand("OK");
 					getRootPane().setDefaultButton(okButton);
 				}
 				{
 					JButton cancelButton = new JButton("Cancelar");
+					cancelButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							dispose();
+						}
+					});
 					panel.add(cancelButton);
 					cancelButton.setActionCommand("Cancel");
 				}
@@ -119,11 +186,13 @@ public class Fuente extends JDialog {
 				flowLayout.setHgap(20);
 				buttonPane.add(panel, BorderLayout.WEST);
 				{
-					JLabel lblEjemplo = new JLabel("EJEMPLO");
+					lblEjemplo = new JLabel("EJEMPLO");
 					panel.add(lblEjemplo);
 				}
 			}
 		}
+		
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 	}
 
 }
