@@ -22,6 +22,7 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
@@ -41,7 +42,9 @@ public class ContPrincipal {
 		this.FILE_NAME=FileName;
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	
+		DOMImplementation implementation = dBuilder.getDOMImplementation();
+		
+		docXML = implementation.createDocument(FileName, "elemento", null);
 		docXML = dBuilder.parse(FileName);
 		docXML.getDocumentElement().normalize();
 		
@@ -127,7 +130,6 @@ public class ContPrincipal {
 	}
 
 	public void addNodeMando(Mando m) {
-			System.out.println("hola");
 			Node nId_tag = docXML.createElement("id");
 			nId_tag.appendChild(docXML.createTextNode(""+m.getId()));
 			
