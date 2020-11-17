@@ -24,7 +24,9 @@ public class ContPrincipal {
 		String directorio = FchAbrir.getDirectory();
 		String fichero = FchAbrir.getFile();
 		FinalDirectorioAbrir = directorio += fichero;
-		Principal.textArea.setText(LogPrincipal.leerFichero(FinalDirectorioAbrir).get(0));
+
+		Principal.textArea.setText(LogPrincipal.leerFichero(FinalDirectorioAbrir));
+		
 		numCaracteres(lblXxx);
 		control = 1;
 	}

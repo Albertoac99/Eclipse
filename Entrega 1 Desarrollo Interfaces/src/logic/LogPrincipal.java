@@ -13,8 +13,8 @@ import view.Principal;
 
 public class LogPrincipal {
 
-	public static List<String> leerFichero(String File_Name) {
-		List<String> contenido = new ArrayList<String>();
+	public static String leerFichero(String File_Name) {
+		String contenido="";
 		
 		try {
 			 
@@ -25,7 +25,7 @@ public class LogPrincipal {
 			
 			lineaLeida = lectura.readLine();
 			while(lineaLeida != null){
-				contenido.add(lineaLeida);
+				contenido+=(lineaLeida)+="\n";
 				lineaLeida = lectura.readLine();
 			}
 			

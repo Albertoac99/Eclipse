@@ -17,6 +17,7 @@ import java.awt.GridLayout;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class Colores extends JDialog {
 
@@ -28,6 +29,8 @@ public class Colores extends JDialog {
 	 * Create the dialog.
 	 */
 	public Colores() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Medac\\eclipse-workspace\\Entrega 1 Desarrollo Interfaces\\imagenes\\boligrafo.png"));
+		setResizable(false);
 		setTitle("Colores");
 		setBounds(100, 100, 450, 230);
 		getContentPane().setLayout(new BorderLayout());

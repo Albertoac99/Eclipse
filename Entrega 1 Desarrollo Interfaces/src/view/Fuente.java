@@ -25,6 +25,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
 
 public class Fuente extends JDialog {
 	public static JLabel lblEjemplo;
@@ -35,6 +36,8 @@ public class Fuente extends JDialog {
 	 * Create the dialog.
 	 */
 	public Fuente() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Medac\\eclipse-workspace\\Entrega 1 Desarrollo Interfaces\\imagenes\\boligrafo.png"));
+		setResizable(false);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

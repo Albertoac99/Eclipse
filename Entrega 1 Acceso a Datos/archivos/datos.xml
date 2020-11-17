@@ -1,6 +1,233 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <elemento xmlns="archivos\datos.xml">
+                    
+    
+    
+    
+    <mando>
+                                        
+        
+        
+        
+        <id>1</id>
+                                        
+        
+        
+        
+        <modelo>SG1</modelo>
+                                        
+        
+        
+        
+        <botones>1POWER50000.0</botones>
+                                    
+    
+    
+    
+    </mando>
+                    
+    
+    
+    
+    <mando>
+                                        
+        
+        
+        
+        <id>2</id>
+                                        
+        
+        
+        
+        <modelo>MA3</modelo>
+                                        
+        
+        
+        
+        <botones>2GUIDE20000.0</botones>
+                                    
+    
+    
+    
+    </mando>
+                    
+    
+    
+    
+    <mando>
+                                        
+        
+        
+        
+        <id>3</id>
+                                        
+        
+        
+        
+        <modelo>PR4</modelo>
+                                        
+        
+        
+        
+        <botones>3SOURCE20000.0</botones>
+                                    
+    
+    
+    
+    </mando>
+                    
+    
+    
+    
+    <mando>
+                                        
+        
+        
+        
+        <id>4</id>
+                                        
+        
+        
+        
+        <modelo>CCD</modelo>
+                                        
+        
+        
+        
+        <botones>4BACK20000.0</botones>
+                                    
+    
+    
+    
+    </mando>
+                    
+    
+    
+    
+    <mando>
+                                        
+        
+        
+        
+        <id>5</id>
+                                        
+        
+        
+        
+        <modelo>HT1</modelo>
+                                        
+        
+        
+        
+        <botones>5VOLUME20000.0</botones>
+                                    
+    
+    
+    
+    </mando>
+                
+    
+    
+    
+    <mando>
+                                
+        
+        
+        <id>1</id>
+                                
+        
+        
+        <modelo>SG1</modelo>
+                                
+        
+        
+        <botones>1POWER50000.0</botones>
+                            
+    
+    
+    </mando>
+                
+    
+    
+    <mando>
+                                
+        
+        
+        <id>2</id>
+                                
+        
+        
+        <modelo>MA3</modelo>
+                                
+        
+        
+        <botones>2GUIDE20000.0</botones>
+                            
+    
+    
+    </mando>
+                
+    
+    
+    <mando>
+                                
+        
+        
+        <id>3</id>
+                                
+        
+        
+        <modelo>PR4</modelo>
+                                
+        
+        
+        <botones>3SOURCE20000.0</botones>
+                            
+    
+    
+    </mando>
+                
+    
+    
+    <mando>
+                                
+        
+        
+        <id>4</id>
+                                
+        
+        
+        <modelo>CCD</modelo>
+                                
+        
+        
+        <botones>4BACK20000.0</botones>
+                            
+    
+    
+    </mando>
+                
+    
+    
+    <mando>
+                                
+        
+        
+        <id>5</id>
+                                
+        
+        
+        <modelo>HT1</modelo>
+                                
+        
+        
+        <botones>5VOLUME20000.0</botones>
+                            
+    
+    
+    </mando>
             
+    
     
     <mando>
                         

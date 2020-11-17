@@ -23,6 +23,7 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
+import java.awt.Toolkit;
 
 public class Principal extends JFrame {
 
@@ -50,8 +51,10 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Medac\\eclipse-workspace\\Entrega 1 Desarrollo Interfaces\\imagenes\\boligrafo.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		setTitle("Editor de textos");
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -158,6 +161,15 @@ public class Principal extends JFrame {
 		menuBar.add(mnAyuda);
 		
 		JMenuItem mntmAyuda = new JMenuItem("Ayuda");
+		mntmAyuda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				JDialog ayuda = new Ayuda();
+				
+				ayuda.setVisible(true);
+				
+			}
+		});
 		mnAyuda.add(mntmAyuda);
 		
 		JMenuItem mntmAcercaDe = new JMenuItem("Acerca de");

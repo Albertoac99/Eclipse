@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 
 public class AcercaDe extends JDialog {
 
@@ -19,6 +20,8 @@ public class AcercaDe extends JDialog {
 	 * Create the dialog.
 	 */
 	public AcercaDe() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Medac\\eclipse-workspace\\Entrega 1 Desarrollo Interfaces\\imagenes\\boligrafo.png"));
+		setResizable(false);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());
@@ -26,6 +29,7 @@ public class AcercaDe extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		{
 			JTextArea txtrAutorAlbertoAranda = new JTextArea();
+			txtrAutorAlbertoAranda.setEditable(false);
 			txtrAutorAlbertoAranda.setBackground(SystemColor.control);
 			txtrAutorAlbertoAranda.setText("Programa: Editor de Texto\r\n\r\nVersi\u00F3n: 1.0\r\n\r\nFecha: 10/11/2020\r\n\r\nAutor: Alberto Aranda Castro\r\n\r\n");
 			contentPanel.add(txtrAutorAlbertoAranda);
