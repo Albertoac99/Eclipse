@@ -20,8 +20,8 @@ public class ContPrincipal {
 	}
 
 	public static void salir() {
-		if (JOptionPane.showConfirmDialog(null, "¿Desea salir de Consultas SQL?", "Confirmar Salir", JOptionPane.YES_OPTION) == JOptionPane.YES_OPTION) {
-			System.exit(0);
+		if(LogPrincipal.salir()) {
+		System.exit(0);
 		}
 		
 	}

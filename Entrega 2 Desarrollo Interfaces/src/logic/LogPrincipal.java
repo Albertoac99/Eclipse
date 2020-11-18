@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 public class LogPrincipal {
 
 	public static String establecerConexion(ConexionDB conexion) {
@@ -41,6 +43,15 @@ public class LogPrincipal {
 			System.out.println("Error accediendo al fichero");
 		}
 				
+	}
+
+	public static boolean salir() {
+		if (JOptionPane.showConfirmDialog(null, "¿Desea salir de Consultas SQL?", "Confirmar Salir", JOptionPane.YES_OPTION) == JOptionPane.YES_OPTION) {
+			return true;
+		}
+		else {
+		return false;
+		}
 	}
 
 }

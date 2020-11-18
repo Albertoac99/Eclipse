@@ -12,6 +12,7 @@ import java.awt.Font;
 import javax.swing.border.MatteBorder;
 
 import controller.ContPrincipal;
+import logic.LogPrincipal;
 import model.Producto;
 
 import java.awt.Color;
@@ -47,14 +48,17 @@ public class Principal extends JFrame {
 	public static JCheckBox chckbxNewCheckBox;
 	public static JCheckBox chckbxNewCheckBox_1;
 	public static JTextArea textArea;
+	public static JRadioButton rdbtnNewRadioButton;
+	public static JRadioButton rdbtnNewRadioButton_1;
+	public static JRadioButton rdbtnNewRadioButton_2;
 	public static List<Producto> productos;
+	public static int position;
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
 		productos = new ArrayList<Producto>();
-		ContPrincipal.abrir();
+		
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -66,6 +70,7 @@ public class Principal extends JFrame {
 				}
 			}
 		});
+		
 	}
 
 	/**
@@ -109,6 +114,11 @@ public class Principal extends JFrame {
 		panel_2.add(btnNewButton_6);
 		
 		JButton btnNewButton_4 = new JButton("Nuevo");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ContPrincipal.nuevo();
+			}
+		});
 		panel_2.add(btnNewButton_4);
 		
 		JPanel panel_3 = new JPanel();
@@ -116,18 +126,38 @@ public class Principal extends JFrame {
 		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 10));
 		
 		JButton btnNewButton = new JButton("|<");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ContPrincipal.inicioProducto(0);
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		panel_3.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("<<");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ContPrincipal.cambio(-1);
+			}
+		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		panel_3.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton(">>");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ContPrincipal.cambio(1);
+			}
+		});
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		panel_3.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton(">|");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ContPrincipal.finalProducto(0);
+			}
+		});
 		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		panel_3.add(btnNewButton_3);
 		
@@ -157,17 +187,17 @@ public class Principal extends JFrame {
 		lblNewLabel_2.setBounds(24, 101, 46, 14);
 		panel_1.add(lblNewLabel_2);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Pack");
+		rdbtnNewRadioButton = new JRadioButton("Pack");
 		buttonGroup.add(rdbtnNewRadioButton);
 		rdbtnNewRadioButton.setBounds(91, 97, 109, 23);
 		panel_1.add(rdbtnNewRadioButton);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Unidad");
+		rdbtnNewRadioButton_1 = new JRadioButton("Unidad");
 		buttonGroup.add(rdbtnNewRadioButton_1);
 		rdbtnNewRadioButton_1.setBounds(91, 123, 109, 23);
 		panel_1.add(rdbtnNewRadioButton_1);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Combinado");
+		rdbtnNewRadioButton_2 = new JRadioButton("Combinado");
 		buttonGroup.add(rdbtnNewRadioButton_2);
 		rdbtnNewRadioButton_2.setBounds(91, 149, 109, 23);
 		panel_1.add(rdbtnNewRadioButton_2);
@@ -212,11 +242,9 @@ public class Principal extends JFrame {
 		textField_2.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				if(e.getKeyChar()!="0".charAt(0) || e.getKeyChar()!="1".charAt(0) || e.getKeyChar()!="2".charAt(0) || e.getKeyChar()!="3".charAt(0) || e.getKeyChar()!="4".charAt(0) 
-						|| e.getKeyChar()!="5".charAt(0) || e.getKeyChar()!="0".charAt(0) || e.getKeyChar()!="0".charAt(0) || e.getKeyChar()!="0".charAt(0) ||
-						e.getKeyChar()!="0".charAt(0) || e.getKeyChar()!="0".charAt(0)) {
-					e.setKeyChar((char) e.VK_DELETE);
-				}
+				
+				ContPrincipal.caracteres(e);
+				
 			}
 		});
 		
@@ -226,11 +254,27 @@ public class Principal extends JFrame {
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
+		textField_3.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				
+				ContPrincipal.caracteres(e);
+				
+			}
+		});
 		textField_3.setBounds(411, 59, 86, 20);
 		panel_1.add(textField_3);
 		textField_3.setColumns(10);
 		
 		textField_4 = new JTextField();
+		textField_4.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				
+				ContPrincipal.caracteres(e);
+				
+			}
+		});
 		textField_4.setBounds(411, 98, 86, 20);
 		panel_1.add(textField_4);
 		textField_4.setColumns(10);
@@ -241,6 +285,12 @@ public class Principal extends JFrame {
 		panel_1.add(comboBox);
 		
 		textField_5 = new JTextField();
+		textField_5.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				ContPrincipal.caracteres(e);
+			}
+		});
 		textField_5.setBounds(411, 253, 86, 20);
 		panel_1.add(textField_5);
 		textField_5.setColumns(10);
@@ -252,5 +302,7 @@ public class Principal extends JFrame {
 		textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	
+		ContPrincipal.abrir();
 	}
 }
