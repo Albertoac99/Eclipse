@@ -51,7 +51,7 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Medac\\eclipse-workspace\\Entrega 1 Desarrollo Interfaces\\imagenes\\boligrafo.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes\\boligrafo.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setTitle("Editor de textos");

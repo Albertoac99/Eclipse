@@ -2,6 +2,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.Semaphore;
 
+
 public class P1 {
 	
 public class Control {
@@ -52,14 +53,13 @@ public class Control {
 		@Override
 		public void run() {
 			
-			boolean repeticion = true;
 			int recorrido = 3000;
 			
 			
-			while(repeticion) {
+			while(true) {
 			try {
 				
-				
+				control.oSemaforoCoche.acquire();
 				control.oSemaforoVisitante.acquire();
 				
 				int numero = control.cola.poll().getiId();
@@ -68,9 +68,14 @@ public class Control {
 				
 				Thread.sleep(recorrido);
 				
-				System.out.println("El coche " +getiId()+ " ha terminado el recorrido");
+				System.err.println("El coche " +getiId()+ " ha terminado el recorrido");
 				
-				System.out.println("El visitante "+numero+ " ha salido de la atracción");
+				System.err.println("El visitante "+numero+ " ha salido de la atracción");
+				
+				control.oSemaforoCoche.release();
+				
+				Thread.sleep(1000);
+				
 				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -125,8 +130,8 @@ public class Control {
 	
 	
 	private void executeMultiThreading () {
+		
 
-		boolean repeticion = true;
 		final int NUMCOCHES = 4;
 		
 		int iContador;		
@@ -138,10 +143,13 @@ public class Control {
 		   
 		}
 
+		
+		
+		
 		iContador = 0;
 
 		// Creando visitantes
-		while(repeticion) {
+		while(true) {
 		    //System.out.println("Creando el hilo " + iContador + ".");
 		    new Thread(new HiloPasajero(iContador)).start();
 		    iContador++;

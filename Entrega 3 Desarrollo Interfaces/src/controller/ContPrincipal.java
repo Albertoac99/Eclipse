@@ -2,6 +2,7 @@ package controller;
 
 import javax.swing.JOptionPane;
 
+import logic.LogPrincipal;
 import view.Principal;
 
 public class ContPrincipal {
@@ -12,5 +13,32 @@ public class ContPrincipal {
 			System.exit(0);
 		}
 	}
+
+	public static void abrir() {
+		
+		Principal.productos = LogPrincipal.readDataObject(Principal.RUTA);
+		
+	}
+
+	public static void guardar() {
+		
+		String codigo = Principal.textField.getText();
+		String nombre = Principal.textField_1.getText();
+		int stockActual;
+		int stockMinimo;
+		int stockMaximo;
+		int opcion;
+		String comentario;
+		int proveedor;
+		boolean fragil;
+		boolean obsoleto;
+		float pvp;
+		
+		
+		Principal.productos.add(new Producto());
+		
+	}
+	
+	
 
 }

@@ -1,24 +1,31 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.ContConexion;
+
 import javax.swing.JRadioButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Conexion extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	public static JTextField textField;
+	public static JTextField textField_1;
+	public static JTextField textField_2;
+	public static JTextField textField_3;
+	public static JRadioButton rdbtnNewRadioButton;
+	public static JRadioButton rdbtnNewRadioButton_1;
+	public static JTextField textField_4;
 
 
 	/**
@@ -33,12 +40,15 @@ public class Conexion extends JDialog {
 		{
 			JPanel panel = new JPanel();
 			contentPanel.add(panel, BorderLayout.NORTH);
+			ButtonGroup grupo = new ButtonGroup(); 
 			{
 				JRadioButton rdbtnNewRadioButton = new JRadioButton("Oracle");
+				grupo.add(rdbtnNewRadioButton);
 				panel.add(rdbtnNewRadioButton);
 			}
 			{
 				JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("MySQL");
+				grupo.add(rdbtnNewRadioButton_1);
 				panel.add(rdbtnNewRadioButton_1);
 			}
 		}
@@ -97,6 +107,11 @@ public class Conexion extends JDialog {
 			contentPanel.add(panel, BorderLayout.SOUTH);
 			{
 				JButton btnNewButton = new JButton("Conectar");
+				btnNewButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						ContConexion.conexion();
+					}
+				});
 				panel.add(btnNewButton);
 			}
 		}

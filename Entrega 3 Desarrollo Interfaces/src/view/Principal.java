@@ -7,40 +7,55 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
-import java.awt.GridLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 
 import controller.ContPrincipal;
+import model.Producto;
 
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.ButtonGroup;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Principal extends JFrame {
 
+	public static final String RUTA = "archivos\\datos.dat";
 	private JPanel contentPane;
 	public static JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
-
+	public static JTextField textField_1;
+	public static JTextField textField_2;
+	public static JTextField textField_3;
+	public static JTextField textField_4;
+	public static JTextField textField_5;
+	public static ButtonGroup buttonGroup = new ButtonGroup();
+	public static JComboBox comboBox;
+	public static JCheckBox chckbxNewCheckBox;
+	public static JCheckBox chckbxNewCheckBox_1;
+	public static JTextArea textArea;
+	public static List<Producto> productos;
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
+		productos = new ArrayList<Producto>();
+		ContPrincipal.abrir();
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -57,8 +72,9 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 559, 387);
+		setBounds(100, 100, 553, 387);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -83,6 +99,13 @@ public class Principal extends JFrame {
 		panel_2.add(btnNewButton_5);
 		
 		JButton btnNewButton_6 = new JButton("Guardar");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ContPrincipal.guardar();
+				
+			}
+		});
 		panel_2.add(btnNewButton_6);
 		
 		JButton btnNewButton_4 = new JButton("Nuevo");
@@ -122,7 +145,7 @@ public class Principal extends JFrame {
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nombre:");
-		lblNewLabel_1.setBounds(24, 62, 46, 14);
+		lblNewLabel_1.setBounds(24, 62, 76, 14);
 		panel_1.add(lblNewLabel_1);
 		
 		textField_1 = new JTextField();
@@ -149,19 +172,15 @@ public class Principal extends JFrame {
 		rdbtnNewRadioButton_2.setBounds(91, 149, 109, 23);
 		panel_1.add(rdbtnNewRadioButton_2);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(91, 179, 201, 59);
-		panel_1.add(textArea);
-		
 		JLabel lblNewLabel_3 = new JLabel("Comentarios:");
-		lblNewLabel_3.setBounds(24, 179, 76, 14);
+		lblNewLabel_3.setBounds(10, 180, 76, 14);
 		panel_1.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Otros:");
 		lblNewLabel_4.setBounds(24, 256, 46, 14);
 		panel_1.add(lblNewLabel_4);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Es fr\u00E1gil");
+		chckbxNewCheckBox = new JCheckBox("Es fr\u00E1gil");
 		chckbxNewCheckBox.setBounds(91, 252, 97, 23);
 		panel_1.add(chckbxNewCheckBox);
 		
@@ -181,7 +200,7 @@ public class Principal extends JFrame {
 		lblNewLabel_8.setBounds(315, 184, 68, 14);
 		panel_1.add(lblNewLabel_8);
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Obsoleto");
+		chckbxNewCheckBox_1 = new JCheckBox("Obsoleto");
 		chckbxNewCheckBox_1.setBounds(195, 252, 97, 23);
 		panel_1.add(chckbxNewCheckBox_1);
 		
@@ -190,6 +209,18 @@ public class Principal extends JFrame {
 		panel_1.add(lblNewLabel_9);
 		
 		textField_2 = new JTextField();
+		textField_2.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(e.getKeyChar()!="0".charAt(0) || e.getKeyChar()!="1".charAt(0) || e.getKeyChar()!="2".charAt(0) || e.getKeyChar()!="3".charAt(0) || e.getKeyChar()!="4".charAt(0) 
+						|| e.getKeyChar()!="5".charAt(0) || e.getKeyChar()!="0".charAt(0) || e.getKeyChar()!="0".charAt(0) || e.getKeyChar()!="0".charAt(0) ||
+						e.getKeyChar()!="0".charAt(0) || e.getKeyChar()!="0".charAt(0)) {
+					e.setKeyChar((char) e.VK_DELETE);
+				}
+			}
+		});
+		
+		
 		textField_2.setBounds(411, 23, 86, 20);
 		panel_1.add(textField_2);
 		textField_2.setColumns(10);
@@ -204,13 +235,22 @@ public class Principal extends JFrame {
 		panel_1.add(textField_4);
 		textField_4.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(411, 180, 30, 22);
+		comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Amazon", "PCComponentes", "Carrefour", "Mercadona"}));
+		comboBox.setBounds(411, 180, 86, 22);
 		panel_1.add(comboBox);
 		
 		textField_5 = new JTextField();
 		textField_5.setBounds(411, 253, 86, 20);
 		panel_1.add(textField_5);
 		textField_5.setColumns(10);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(91, 179, 201, 59);
+		panel_1.add(scrollPane);
+		
+		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 	}
 }

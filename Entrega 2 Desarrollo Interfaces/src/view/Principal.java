@@ -3,11 +3,13 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.ContPrincipal;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -20,13 +22,19 @@ import java.awt.event.InputEvent;
 import java.awt.GridLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
-
+	public static JTextArea textArea;
+	public static JTextArea textArea_1;
+	public static JLabel lblNewLabel;
+	public static Principal frame;
 	/**
 	 * Launch the application.
 	 */
@@ -34,7 +42,7 @@ public class Principal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Principal frame = new Principal();
+					frame = new Principal();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,6 +65,13 @@ public class Principal extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Conexi\u00F3n...");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JDialog conexion = new Conexion();
+				conexion.setVisible(true);
+				
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenu mnNewMenu_1 = new JMenu("Consulta");
@@ -66,21 +81,45 @@ public class Principal extends JFrame {
 		mnNewMenu_1.add(mntmNewMenuItem_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Limpiar");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ContPrincipal.limpiar(textArea);
+				
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_2);
 		
 		JMenu mnNewMenu_2 = new JMenu("Resultados");
 		mnNewMenu.add(mnNewMenu_2);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Guardar");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ContPrincipal.guardar();
+			}
+		});
 		mnNewMenu_2.add(mntmNewMenuItem_3);
 		
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Limpiar");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				ContPrincipal.limpiar(textArea_1);
+				
+			}
+		});
 		mnNewMenu_2.add(mntmNewMenuItem_4);
 		
 		JSeparator separator = new JSeparator();
 		mnNewMenu.add(separator);
 		
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Salir");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ContPrincipal.salir();
+			}
+		});
 		mntmNewMenuItem_5.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmNewMenuItem_5);
 		contentPane = new JPanel();
@@ -95,14 +134,15 @@ public class Principal extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		panel.add(scrollPane);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		panel.add(scrollPane_1);
 		
-		JTextArea textArea_1 = new JTextArea();
+		textArea_1 = new JTextArea();
+		textArea_1.setEditable(false);
 		scrollPane_1.setViewportView(textArea_1);
 		textArea_1.setBackground(Color.black);
 		textArea_1.setForeground(Color.white);
@@ -112,12 +152,18 @@ public class Principal extends JFrame {
 		contentPane.add(panel_1, BorderLayout.SOUTH);
 		
 		JButton btnNewButton = new JButton("Limpiar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ContPrincipal.limpiar(textArea);
+				ContPrincipal.limpiar(textArea_1);
+			}
+		});
 		panel_1.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("EJECUTAR");
 		panel_1.add(btnNewButton_1);
 		
-		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel = new JLabel("");
 		panel_1.add(lblNewLabel);
 	}
 }
