@@ -24,6 +24,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
@@ -130,28 +131,34 @@ public class ContPrincipal {
 	}
 
 	public void addNodeMando(Mando m) {
-			Node nId_tag = docXML.createElement("id");
-			nId_tag.appendChild(docXML.createTextNode(""+m.getId()));
+			Node nMando = docXML.createElement("mando");
+			((Element)nMando).setAttribute("id", ""+m.getId());
 			
 			Node nModelo_tag = docXML.createElement("modelo");
 			nModelo_tag.appendChild(docXML.createTextNode(m.getModelo()));
-			Node nMando = docXML.createElement("mando");
-			nMando.appendChild(nId_tag);
-			nMando.appendChild(nModelo_tag);
 			
 			
+			
+			Node nBotones_tag = null;
 			for(int i = 0;i<m.getBotones().size();i++) {
-			Node nBotones_tag = docXML.createElement("botones");
+			nBotones_tag = docXML.createElement("botones");
+			((Element)nBotones_tag).setAttribute("id", ""+m.getBotones().get(i).getId());
 			
-			nBotones_tag.appendChild(docXML.createElement("id").appendChild(docXML.createTextNode(""+m.getBotones().get(i).getId())));
-			nBotones_tag.appendChild(docXML.createElement("texto").appendChild(docXML.createTextNode(""+m.getBotones().get(i).getTexto())));
-			nBotones_tag.appendChild(docXML.createElement("pulsaVida").appendChild(docXML.createTextNode(""+m.getBotones().get(i).getpulsaVida())));
-			nMando.appendChild(nBotones_tag);
+			Node texto = docXML.createElement("texto");
+			texto.appendChild(docXML.createTextNode(""+m.getBotones().get(i).getTexto()));
+			
+			Node pulsaVida = docXML.createElement("pulsaVida");
+			pulsaVida.appendChild(docXML.createTextNode(""+m.getBotones().get(i).getpulsaVida()));
+			
+			
+			nBotones_tag.appendChild(texto);
+			nBotones_tag.appendChild(pulsaVida);
+			
 			}
 			
 			
-			
-			
+			nMando.appendChild(nModelo_tag);
+			nMando.appendChild(nBotones_tag);
 			
 			
 			Node nRaiz = docXML.getFirstChild();
