@@ -43,9 +43,11 @@ public class ContPrincipal {
 		this.FILE_NAME=FileName;
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		
 		DOMImplementation implementation = dBuilder.getDOMImplementation();
 		
 		docXML = implementation.createDocument(FileName, "elemento", null);
+		
 		docXML = dBuilder.parse(FileName);
 		docXML.getDocumentElement().normalize();
 		
