@@ -59,7 +59,7 @@ public class ContPrincipal {
 		List<String> contenido = new ArrayList<String>();
 		
 		contenido.add(textArea.getText());
-		FileDialog FchGuardar = new FileDialog(Principal.frame, "Abrir documento...", FileDialog.SAVE);
+		FileDialog FchGuardar = new FileDialog(Principal.frame, "Guardar documento...", FileDialog.SAVE);
 		FchGuardar.setVisible(true);
 		String directorio = FchGuardar.getDirectory();
 		String fichero = FchGuardar.getFile();

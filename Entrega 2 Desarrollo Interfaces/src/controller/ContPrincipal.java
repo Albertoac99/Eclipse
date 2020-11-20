@@ -42,4 +42,16 @@ public class ContPrincipal {
 		
 	}
 
+	public static void cargar() {
+		FileDialog FchAbrir = new FileDialog(Principal.frame, "Guardar documento...", FileDialog.LOAD);
+		FchAbrir.setVisible(true);
+		String directorio = FchAbrir.getDirectory();
+		String fichero = FchAbrir.getFile();
+		String FinalDirectorioAbrir = directorio += fichero;
+		
+		Principal.textArea.setText(LogPrincipal.leerFichero(FinalDirectorioAbrir));
+		
+		
+	}
+
 }

@@ -29,7 +29,7 @@ public class Colores extends JDialog {
 	 * Create the dialog.
 	 */
 	public Colores() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Medac\\eclipse-workspace\\Entrega 1 Desarrollo Interfaces\\imagenes\\boligrafo.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes\\boligrafo.png"));
 		setResizable(false);
 		setTitle("Colores");
 		setBounds(100, 100, 450, 230);

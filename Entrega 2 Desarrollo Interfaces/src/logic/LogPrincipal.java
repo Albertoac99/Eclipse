@@ -1,6 +1,9 @@
 package logic;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -22,6 +25,49 @@ public class LogPrincipal {
 			return "ERROR";
 		}
 		
+	}
+	public static String establecerConexionMySQL(ConexionMySQL conexion) {
+		
+		if(conexion.checkConnectionDatabase()) {
+			
+			
+			return "VÁLIDO";
+			
+		}
+		else {
+			
+			return "ERROR";
+		}
+		
+	}
+	public static String leerFichero(String File_Name) {
+		String contenido="";
+		
+		try {
+			 
+			FileReader fch = new FileReader(File_Name);
+			BufferedReader lectura = new BufferedReader(fch);
+			
+			String lineaLeida;
+			
+			lineaLeida = lectura.readLine();
+			while(lineaLeida != null){
+				contenido+=(lineaLeida)+="\n";
+				lineaLeida = lectura.readLine();
+			}
+			
+		
+			lectura.close();
+			fch.close();
+			
+			
+			
+		}catch(FileNotFoundException e) {
+			System.out.println("Error al encontrar el archivo "+ File_Name);
+		}catch (IOException e) {
+			System.out.println("Error al leer el archivo");
+		}
+		return contenido;
 	}
 	
 	public static void escribirFichero(String File_Name, List<String> contenido) {
