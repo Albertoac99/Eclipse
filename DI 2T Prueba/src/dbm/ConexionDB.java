@@ -6,16 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DB_Oracle {
+public class ConexionDB {
 
-	
 	private static String DB_HOST = "localhost";
 	private static String DB_PORT = "1521";
 	private static String DB_SID = "MEDAC2020";
 	
 	
-	private static String DB_USER = "Alberto";
+	private static String DB_USER = "Medac";
 	private static String DB_PASS = "Medac2020";
+	
 	
 	
 	public static Connection getConnection() {
@@ -29,7 +29,6 @@ public class DB_Oracle {
 			System.out.println("No se ha podido establecer conexión");
 			e.printStackTrace();
 		}
-		
 		
 		
 		return conn;
@@ -60,8 +59,6 @@ public class DB_Oracle {
 
 	return resultado;
 	}
-	
-	
 	
 	
 }

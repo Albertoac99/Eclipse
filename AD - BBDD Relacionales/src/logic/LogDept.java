@@ -17,7 +17,7 @@ public class LogDept {
 		
 		Connection c = DB_Oracle.getConnection();
 		
-		ResultSet r = DB_Oracle.getData(c, "SELECT * FROM DEPT ORDDER BY DNAME");
+		ResultSet r = DB_Oracle.getData(c, "SELECT * FROM DEPT ORDER BY DNAME");
 		
 		try {
 			while(r.next()) {
