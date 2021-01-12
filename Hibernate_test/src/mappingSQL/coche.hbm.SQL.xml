@@ -4,7 +4,7 @@
 	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-	<class name="model.Coche" table="Coche">
+	<class name="model.Coche" table="coche">
 		
 	<id name="idCoche" column="ID_COCHE" type="integer">
 	

@@ -22,8 +22,8 @@
 		
 		<!-- Mapping Files -->
 		
-		<mapping resource="mapping/coche.hbm.xml"/>
-		
+		<!-- <mapping resource="mappingSQL/coche.hbm.SQL.xml"/> -->
+		<mapping resource="mappingSQL/persona.hbm.SQL.xml"/>
 	
 
 	</session-factory>
