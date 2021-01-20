@@ -8,8 +8,7 @@ public class Coche {
 	public Coche() {
 	}
 
-	public Coche(Integer potencia, String marca, String modelo) {
-		super();
+	public Coche(String marca, String modelo, Integer potencia) {
 		this.potencia = potencia;
 		this.marca = marca;
 		this.modelo = modelo;

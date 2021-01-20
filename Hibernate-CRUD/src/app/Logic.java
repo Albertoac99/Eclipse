@@ -1,56 +1,116 @@
 package app;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import model.Coche;
 
 public class Logic {
 
-	public static void insertCoche(Coche c) {
-		
-		Dbm.session.beginTransaction();
-		Dbm.session.save(c);
-		Dbm.session.getTransaction();
-		
-	}
-
 	public static Coche getCoche(int id) {
-		Dbm.session.beginTransaction();
-		Coche c = Dbm.session.get(Coche.class, id); 
-		Dbm.session.getTransaction();
+		Coche c = null;
+
+		Transaction transaction = null;
+		try (Session session = Dbm.getSessionFactory().openSession()) {
+			transaction = session.beginTransaction();
+
+			c = session.get(Coche.class, id);
+
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			System.err.println(e.getMessage());
+		}
+
 		return c;
 	}
 
-	public static void update(Coche c) {
-		Dbm.session.beginTransaction();
-		Dbm.session.update(c); 
-		Dbm.session.getTransaction();
+	public static boolean saveCoche(Coche c) {
+		boolean finishOK;
+		Transaction transaction = null;
+		try (Session session = Dbm.getSessionFactory().openSession()) {
+			transaction = session.beginTransaction();
+
+			session.save(c);
+
+			transaction.commit();
+			finishOK = true;
+		} catch (Exception e) {
+			finishOK = false;
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			System.err.println(e.getMessage());
+		}
+
+		return finishOK;
 	}
 
-	public static void deleteCoche(Coche c) {
-		Transaction tx = Dbm.session.beginTransaction();
-		Dbm.session.delete(c);
-		tx.commit();
-		
+	public static boolean saveOrUpdate(Coche c) {
+		boolean finishOK;
+		Transaction transaction = null;
+		try (Session session = Dbm.getSessionFactory().openSession()) {
+			transaction = session.beginTransaction();
+
+			session.saveOrUpdate(c);
+
+			transaction.commit();
+			finishOK = true;
+		} catch (Exception e) {
+			finishOK = false;
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			System.err.println(e.getMessage());
+		}
+
+		return finishOK;
+	}
+
+	public static boolean delete(Coche c) {
+		boolean finishOK;
+		Transaction transaction = null;
+		try (Session session = Dbm.getSessionFactory().openSession()) {
+			transaction = session.beginTransaction();
+
+			session.delete(c);
+
+			transaction.commit();
+			finishOK = true;
+		} catch (Exception e) {
+			finishOK = false;
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			System.err.println(e.getMessage());
+		}
+
+		return finishOK;
 	}
 
 	@SuppressWarnings("unchecked")
-	public static List<Coche> getListAll() {
-		List<Coche> lst = new ArrayList<Coche>();
-		Dbm.session.beginTransaction();
-		lst = Dbm.session.createQuery("from Coche").getResultList();
-		return lst;
+	public static List<Coche> getAllCoches() {
+		List<Coche> lstCoches = null;
+		Transaction transaction = null;
+		
+		try (Session session = Dbm.getSessionFactory().openSession()) {
+			transaction = session.beginTransaction();
+
+			lstCoches = session.createQuery("from Coche").list();
+
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			System.err.println(e.getMessage());
+		}
+
+		return lstCoches;
 	}
 
-	public static Coche getCocheMatricula(String strMatricula) {
-		Coche c;
-		Dbm.session.beginTransaction();
-		String query = "FROM COCHE WHERE MATRICULA = '" + strMatricula + "'";
-		c = (Coche) Dbm.session.createQuery(query).uniqueResult();
-		return c;
-	}
 }
