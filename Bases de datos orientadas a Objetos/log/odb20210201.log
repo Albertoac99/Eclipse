@@ -1,0 +1,249 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-02-01 09:34:30 #1 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\prueba.odb' is opened by 8208@DESKTOP-ILA73PP
+
+[2021-02-01 09:34:30 #2 store] 
+Configuration path: ?
+
+[2021-02-01 09:34:30 #3 type] 
+Type model.Punto is not enhanced.
+
+[2021-02-01 09:34:30 #4 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\prueba.odb' is closed by 8208@DESKTOP-ILA73PP
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-02-01 09:36:01 #1 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\prueba.odb' is opened by 1876@DESKTOP-ILA73PP
+
+[2021-02-01 09:36:01 #2 store] 
+Configuration path: ?
+
+[2021-02-01 09:36:01 #3 type] 
+Type model.Punto is not enhanced.
+
+[2021-02-01 09:36:01 #4 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\prueba.odb' is closed by 1876@DESKTOP-ILA73PP
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-02-01 09:53:44 #1 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\prueba.odb' is opened by 7136@DESKTOP-ILA73PP
+
+[2021-02-01 09:53:44 #2 store] 
+Configuration path: ?
+
+[2021-02-01 09:53:44 #3 type] 
+Type model.Punto is not enhanced.
+
+[2021-02-01 09:53:44 #4 type] 
+Type model.Alojamiento is not enhanced.
+
+[2021-02-01 09:53:44 #5 type] 
+Type model.Persiana is not enhanced.
+
+[2021-02-01 09:53:44 #6 type] 
+Type model.Suelo is not enhanced.
+
+[2021-02-01 09:53:44 #7 type] 
+Type model.Pared is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-02-01 09:54:03 #1 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\prueba.odb' has been recovered (tr. 5-5)
+
+[2021-02-01 09:54:03 #2 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\prueba.odb' is opened by 4196@DESKTOP-ILA73PP
+
+[2021-02-01 09:54:03 #3 store] 
+Configuration path: ?
+
+[2021-02-01 09:54:03 #4 type] 
+Type model.Punto is not enhanced.
+
+[2021-02-01 09:54:03 #5 type] 
+Type model.Alojamiento is not enhanced.
+
+[2021-02-01 09:54:03 #6 type] 
+Type model.Persiana is not enhanced.
+
+[2021-02-01 09:54:03 #7 type] 
+Type model.Suelo is not enhanced.
+
+[2021-02-01 09:54:03 #8 type] 
+Type model.Pared is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-02-01 09:55:12 #1 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\prueba.odb' is opened by 1492@DESKTOP-ILA73PP
+
+[2021-02-01 09:55:12 #2 store] 
+Configuration path: ?
+
+[2021-02-01 09:55:12 #3 type] 
+Type model.Punto is not enhanced.
+
+[2021-02-01 09:55:12 #4 type] 
+Type model.Alojamiento is not enhanced.
+
+[2021-02-01 09:55:12 #5 type] 
+Type model.Persiana is not enhanced.
+
+[2021-02-01 09:55:12 #6 type] 
+Type model.Suelo is not enhanced.
+
+[2021-02-01 09:55:12 #7 type] 
+Type model.Pared is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-02-01 09:56:59 #1 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\prueba.odb' is opened by 6880@DESKTOP-ILA73PP
+
+[2021-02-01 09:56:59 #2 store] 
+Configuration path: ?
+
+[2021-02-01 09:56:59 #3 type] 
+Type model.Punto is not enhanced.
+
+[2021-02-01 09:56:59 #4 type] 
+Type model.Alojamiento is not enhanced.
+
+[2021-02-01 09:56:59 #5 type] 
+Type model.Persiana is not enhanced.
+
+[2021-02-01 09:56:59 #6 type] 
+Type model.Suelo is not enhanced.
+
+[2021-02-01 09:56:59 #7 type] 
+Type model.Pared is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-02-01 10:01:14 #1 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\alojamiento.odb' is opened by 10488@DESKTOP-ILA73PP
+
+[2021-02-01 10:01:14 #2 store] 
+Configuration path: ?
+
+[2021-02-01 10:01:14 #3 type] 
+Type model.Alojamiento is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-02-01 10:05:37 #1 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\alojamiento.odb' has been recovered (tr. 1-3)
+
+[2021-02-01 10:05:37 #2 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\alojamiento.odb' is opened by 10656@DESKTOP-ILA73PP
+
+[2021-02-01 10:05:37 #3 store] 
+Configuration path: ?
+
+[2021-02-01 10:05:37 #4 type] 
+Type model.Alojamiento is not enhanced.
+
+[2021-02-01 10:05:37 #5 type] 
+Type model.Persiana is not enhanced.
+
+[2021-02-01 10:05:37 #6 type] 
+Type model.Suelo is not enhanced.
+
+[2021-02-01 10:05:37 #7 type] 
+Type model.Pared is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-02-01 10:07:09 #1 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\alojamiento.odb' has been recovered (tr. 4-4)
+
+[2021-02-01 10:07:09 #2 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\alojamiento.odb' is opened by 4368@DESKTOP-ILA73PP
+
+[2021-02-01 10:07:09 #3 store] 
+Configuration path: ?
+
+[2021-02-01 10:07:09 #4 type] 
+Type model.Alojamiento is not enhanced.
+
+[2021-02-01 10:07:09 #5 type] 
+Type model.Persiana is not enhanced.
+
+[2021-02-01 10:07:09 #6 type] 
+Type model.Suelo is not enhanced.
+
+[2021-02-01 10:07:09 #7 type] 
+Type model.Pared is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-02-01 10:20:04 #1 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\alojamiento.odb' has been recovered (tr. 5-5)
+
+[2021-02-01 10:20:05 #2 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\alojamiento.odb' is opened by 9640@DESKTOP-ILA73PP
+
+[2021-02-01 10:20:05 #3 store] 
+Configuration path: ?
+
+[2021-02-01 10:20:05 #4 type] 
+Type model.Alojamiento is not enhanced.
+
+[2021-02-01 10:20:05 #5 type] 
+Type model.Persiana is not enhanced.
+
+[2021-02-01 10:20:05 #6 type] 
+Type model.Suelo is not enhanced.
+
+[2021-02-01 10:20:05 #7 type] 
+Type model.Pared is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-02-01 10:24:31 #1 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\alojamiento.odb' is opened by 1224@DESKTOP-ILA73PP
+
+[2021-02-01 10:24:31 #2 store] 
+Configuration path: ?
+
+[2021-02-01 10:24:31 #3 type] 
+Type model.Pared is not enhanced.
+
+[2021-02-01 10:24:31 #4 type] 
+Type model.Suelo is not enhanced.
+
+[2021-02-01 10:24:31 #5 type] 
+Type model.Persiana is not enhanced.
+
+[2021-02-01 10:24:31 #6 type] 
+Type model.Alojamiento is not enhanced.
+
+[2021-02-01 10:24:31 #7 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\alojamiento.odb' is closed by 1224@DESKTOP-ILA73PP
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-02-01 10:24:38 #1 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\alojamiento.odb' is opened by 1800@DESKTOP-ILA73PP
+
+[2021-02-01 10:24:38 #2 store] 
+Configuration path: ?
+
+[2021-02-01 10:24:38 #3 type] 
+Type model.Pared is not enhanced.
+
+[2021-02-01 10:24:38 #4 type] 
+Type model.Suelo is not enhanced.
+
+[2021-02-01 10:24:38 #5 type] 
+Type model.Persiana is not enhanced.
+
+[2021-02-01 10:24:38 #6 type] 
+Type model.Alojamiento is not enhanced.
+
+[2021-02-01 10:24:38 #7 store] 
+Database 'C:\Users\Medac\eclipse-workspace\Bases de datos orientadas a Objetos\db\alojamiento.odb' is closed by 1800@DESKTOP-ILA73PP
+
