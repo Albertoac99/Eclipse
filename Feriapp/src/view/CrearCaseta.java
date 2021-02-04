@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class CrearCaseta extends JFrame {
 
@@ -45,11 +46,17 @@ public class CrearCaseta extends JFrame {
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.NORTH);
 		
+		JLabel lblRelleneLosSiguientes = new JLabel("Rellene los siguientes campos para registrar una nueva caseta:");
+		panel_1.add(lblRelleneLosSiguientes);
+		
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.SOUTH);
 		
 		JButton btnCrearCaseta = new JButton("Crear Caseta");
 		panel_2.add(btnCrearCaseta);
+		
+		JPanel panel_3 = new JPanel();
+		contentPane.add(panel_3, BorderLayout.EAST);
 	}
 
 }
