@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -40,14 +41,17 @@ public class AdminCasetas extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setBackground(new Color(199,238,174));
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(199,238,174));
 		contentPane.add(panel, BorderLayout.CENTER);
 		
 		tblCasetasPropias = new JTable();
 		panel.add(tblCasetasPropias);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(199,238,174));
 		contentPane.add(panel_1, BorderLayout.SOUTH);
 		
 		JButton btnCrearCaseta = new JButton("Crear Caseta");

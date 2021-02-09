@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -87,8 +88,10 @@ public class ListaCasetas extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setBackground(new Color(199,238,174));
 		
 		table = new JTable();
+		table.setBackground(new Color(199,238,174));
 		contentPane.add(table, BorderLayout.CENTER);
 	}
 

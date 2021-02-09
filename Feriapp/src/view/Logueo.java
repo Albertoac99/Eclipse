@@ -10,13 +10,24 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.Font;
+import javax.swing.border.TitledBorder;
+
+import controller.ContLogueo;
+
+import javax.swing.border.MatteBorder;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Logueo extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	public static JTextField txtUsuario;
+	public static JTextField txtContrasenia;
 
 	/**
 	 * Launch the application.
@@ -39,42 +50,54 @@ public class Logueo extends JFrame {
 	 */
 	public Logueo() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 366, 300);
+		setBounds(100, 100, 366, 351);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(162,248,106));
+		contentPane.setBackground(new Color(199,238,174));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(162,248,106));
+		panel.setBackground(new Color(199,238,174));
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
 		JLabel lblUsuario = new JLabel("Usuario:");
-		lblUsuario.setBounds(87, 35, 55, 14);
+		lblUsuario.setBounds(131, 20, 55, 14);
 		panel.add(lblUsuario);
 		
-		textField = new JTextField();
-		textField.setBounds(186, 32, 86, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		txtUsuario = new JTextField();
+		txtUsuario.setBounds(131, 45, 86, 20);
+		panel.add(txtUsuario);
+		txtUsuario.setColumns(10);
 		
 		JLabel lblContraseña = new JLabel("Contrase\u00F1a:");
-		lblContraseña.setBounds(87, 83, 89, 14);
+		lblContraseña.setBounds(131, 87, 89, 14);
 		panel.add(lblContraseña);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(186, 80, 86, 20);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		txtContrasenia = new JTextField();
+		txtContrasenia.setBounds(131, 112, 86, 20);
+		panel.add(txtContrasenia);
+		txtContrasenia.setColumns(10);
 		
 		JButton btnIniciarSesion = new JButton("Iniciar Sesi\u00F3n");
-		btnIniciarSesion.setBounds(119, 126, 116, 23);
+		btnIniciarSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(ContLogueo.iniciarSesion()) {
+					dispose();
+					ListaCasetas listaCasetas = new ListaCasetas();
+					listaCasetas.setVisible(true);
+				}
+				else {
+					
+				}
+			}
+		});
+		btnIniciarSesion.setBounds(118, 160, 116, 23);
 		panel.add(btnIniciarSesion);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(162,248,106));
+		panel_1.setBackground(new Color(199,238,174));
 		contentPane.add(panel_1, BorderLayout.NORTH);
 		
 		JLabel lblFeriapp = new JLabel("FERIAPP");
@@ -83,14 +106,18 @@ public class Logueo extends JFrame {
 		panel_1.add(lblFeriapp);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(162,248,106));
+		panel_2.setForeground(Color.BLACK);
+		panel_2.setBorder(new TitledBorder(new MatteBorder(1, 0, 0, 0, (Color) new Color(153, 180, 209)), "\u00BFEres nuevo en Feriapp?", TitledBorder.CENTER, TitledBorder.TOP, null, Color.DARK_GRAY));
+		panel_2.setBackground(new Color(199,238,174));
 		contentPane.add(panel_2, BorderLayout.SOUTH);
 		
-		JLabel lblnoTienesCuenta = new JLabel("\u00BFNo tienes cuenta? ");
-		lblnoTienesCuenta.setForeground(Color.blue);
-		panel_2.add(lblnoTienesCuenta);
-		
 		JButton btnCrearCuenta = new JButton("Crear Cuenta");
+		btnCrearCuenta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CrearUsuario crearUsuario = new CrearUsuario();
+				crearUsuario.setVisible(true);
+			}
+		});
 		panel_2.add(btnCrearCuenta);
 	}
 }

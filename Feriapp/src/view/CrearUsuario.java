@@ -39,10 +39,10 @@ public class CrearUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public CrearUsuario() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 410, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(162,248,106));
+		contentPane.setBackground(new Color(199,238,174));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -70,7 +70,7 @@ public class CrearUsuario extends JFrame {
 		txtNuevaContraseña.setColumns(10);
 		
 		JCheckBox cbxDueño = new JCheckBox("\u00BFDue\u00F1o de caseta?");
-		cbxDueño.setBackground(new Color(162,248,106));
+		cbxDueño.setBackground(new Color(199,238,174));
 		cbxDueño.setBounds(135, 162, 150, 23);
 		contentPane.add(cbxDueño);
 		
