@@ -2,7 +2,6 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,7 +9,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 
 import java.awt.Font;
 import javax.swing.border.TitledBorder;
@@ -18,38 +16,27 @@ import javax.swing.border.TitledBorder;
 import controller.ContLogueo;
 
 import javax.swing.border.MatteBorder;
-import java.awt.SystemColor;
-import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class Logueo extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public static JTextField txtUsuario;
-	public static JTextField txtContrasenia;
+	public static JPasswordField txtContrasenia;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Logueo frame = new Logueo();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public Logueo() {
+		
+		logueo();
+		
+	}
+	
+	public void logueo() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		setBounds(100, 100, 366, 351);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(199,238,174));
@@ -75,11 +62,6 @@ public class Logueo extends JFrame {
 		lblContraseña.setBounds(131, 87, 89, 14);
 		panel.add(lblContraseña);
 		
-		txtContrasenia = new JTextField();
-		txtContrasenia.setBounds(131, 112, 86, 20);
-		panel.add(txtContrasenia);
-		txtContrasenia.setColumns(10);
-		
 		JButton btnIniciarSesion = new JButton("Iniciar Sesi\u00F3n");
 		btnIniciarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -89,12 +71,16 @@ public class Logueo extends JFrame {
 					listaCasetas.setVisible(true);
 				}
 				else {
-					
+					ContLogueo.errorSesion();
 				}
 			}
 		});
 		btnIniciarSesion.setBounds(118, 160, 116, 23);
 		panel.add(btnIniciarSesion);
+		
+		txtContrasenia = new JPasswordField();
+		txtContrasenia.setBounds(131, 123, 86, 20);
+		panel.add(txtContrasenia);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(199,238,174));
