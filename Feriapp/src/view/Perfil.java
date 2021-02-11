@@ -1,44 +1,42 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.ContLogueo;
+import controller.ContPerfil;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class Perfil extends JFrame {
+public class Perfil extends JDialog {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField txtNuevoUsuario;
 	private JPasswordField txtNuevaContraseña;
+	public static JLabel lblFotoPerfil;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Perfil frame = new Perfil();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Perfil() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		perfil();
+		ContPerfil.download();
+		txtNuevoUsuario.setText(ContLogueo.lstCuentas.get(0).getUsuario());
+		txtNuevaContraseña.setText(ContLogueo.lstCuentas.get(0).getContrasenia());
+		
+	}
+	
+	public void perfil() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 296, 410);
+		setModal(true);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -48,21 +46,26 @@ public class Perfil extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(76, 11, 114, 113);
-		panel.add(lblNewLabel);
+		lblFotoPerfil = new JLabel("");
+		lblFotoPerfil.setBounds(76, 11, 114, 113);
+		panel.add(lblFotoPerfil);
 		
-		textField = new JTextField();
-		textField.setToolTipText("Usuario");
-		textField.setBounds(90, 193, 89, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		txtNuevoUsuario = new JTextField();
+		txtNuevoUsuario.setToolTipText("Usuario");
+		txtNuevoUsuario.setBounds(90, 193, 89, 20);
+		panel.add(txtNuevoUsuario);
+		txtNuevoUsuario.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Cambiar Foto");
 		btnNewButton.setBounds(76, 149, 114, 23);
 		panel.add(btnNewButton);
 		
 		JButton btnGuardarCambios = new JButton("Guardar Cambios");
+		btnGuardarCambios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ContPerfil.
+			}
+		});
 		btnGuardarCambios.setBounds(69, 292, 133, 23);
 		panel.add(btnGuardarCambios);
 		

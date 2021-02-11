@@ -9,7 +9,7 @@ import model.Cuenta;
 import view.Logueo;
 
 public class ContLogueo {
-	private static List<Cuenta> lstCuentas;
+	public static List<Cuenta> lstCuentas;
 
 	public static boolean iniciarSesion() {
 		boolean bExito;

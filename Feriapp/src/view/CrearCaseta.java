@@ -19,6 +19,7 @@ import java.awt.SystemColor;
 
 public class CrearCaseta extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -47,7 +48,7 @@ public class CrearCaseta extends JFrame {
 	 * Create the frame.
 	 */
 	public CrearCaseta() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 561, 327);
 		
 		contentPane = new JPanel();

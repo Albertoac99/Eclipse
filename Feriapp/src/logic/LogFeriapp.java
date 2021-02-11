@@ -1,21 +1,36 @@
 package logic;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.StringJoiner;
 
 import javax.swing.JOptionPane;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import controller.ContLogueo;
+import controller.ContPerfil;
+import model.Caseta;
 import model.Cuenta;
 
 
 public class LogFeriapp {
+	
 	
 	public static void errorIniciar() {
 		
@@ -41,10 +56,7 @@ public class LogFeriapp {
 					
 			lstResultado.add(c);
 			
-			
 		}
-		
-		
 		
 		return lstResultado;
 	}
@@ -84,6 +96,42 @@ public class LogFeriapp {
 		
 		return usuario;
 	}
+	
+	public static List<Caseta> JsonToCasetas(String respuesta) {
+		
+		List<Caseta> lstResultado = new ArrayList<>();
+		
+		JSONArray jsonA = new JSONArray(respuesta);
+		
+		for(int i= 0; i<jsonA.length(); i++) {
+			
+			JSONObject jsonO = jsonA.getJSONObject(i);
+			
+			Caseta c = JsonToCaseta(jsonO);
+					
+			lstResultado.add(c);
+			
+			
+		}
+		
+		return lstResultado;
+	}
+
+	private static Caseta JsonToCaseta(JSONObject jsonO) {
+		
+		 int numeroCaseta = jsonO.getInt("numeroCaseta");
+		 String nombreCaseta = jsonO.getString("nombreCaseta");
+		 String nombreCalle = jsonO.getString("nombreCalle");
+		 int aforoMaximo = jsonO.getInt("aforoMaximo");
+		 int aforoActual = jsonO.getInt("aforoActual");
+		 String horario = jsonO.getString("horario");
+		 int tipoCaseta = jsonO.getInt("tipoCaseta");
+		 int idPropietario= jsonO.getInt("idPropietario");
+		 
+		 Caseta c = new Caseta(numeroCaseta, nombreCaseta, nombreCalle, aforoMaximo, aforoActual, horario, tipoCaseta, idPropietario);
+		
+		return c;
+	}
 
 	public static String peticionHttp(String urlWebService) throws Exception{
 		
@@ -111,5 +159,66 @@ public class LogFeriapp {
 		
 		return resultado.toString();
 	}
+	
+	public static void subirImagen(String ruta) {
+	try {	
+		String filePath = ContPerfil.archivo.getAbsolutePath();
+		String fileName = ""+ContLogueo.lstCuentas.get(0).getIdCuenta();
+		String fileNameWithOutExt = fileName.replaceFirst("[.][^.]+$", "");
+		
+		//Establecer conexion...
+		URL url;
+		
+			url = new URL(ruta);
+		
+		URLConnection con = url.openConnection();
+		HttpURLConnection http = (HttpURLConnection) con;
+		http.setRequestMethod("POST");
+		http.setDoOutput(true);
+		
+		// Parámetros de envío
+		Map<String, String> params = new HashMap<>();
+		params.put("imagenName", fileNameWithOutExt);
+		params.put("imagenData", encoderFileToBase64(filePath));
+		
+		// Array de Bytes de envío
+		StringJoiner sj = new StringJoiner("&");
+		for (Map.Entry<String, String> entry : params.entrySet()) {
+			sj.add(URLEncoder.encode(entry.getKey(), "UTF-8") + "=" + URLEncoder.encode(entry.getValue(), "UTF-8"));
+		}
+		byte [] out = sj.toString().getBytes(StandardCharsets.UTF_8);
+		
+		// Enviar el array de bytes hacia el path (URL del Web-Service)
+		http.setFixedLengthStreamingMode(out.length);
+		http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+		http.connect();
+		http.getOutputStream().write(out);
+		
+		JOptionPane.showMessageDialog(null,"La imagen ha sido subida correctamente", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private static String encoderFileToBase64(String filePath) {
+		
+		String base64Image = "";
+		File file = new File(filePath);
+		try (FileInputStream imageInFile = new FileInputStream(file)) {
+			
+			byte imageData [] = new byte [ (int) file.length() ];
+			imageInFile.read(imageData);
+			base64Image = Base64.getEncoder().encodeToString(imageData);
+			
+		}catch (Exception e) {
+			JOptionPane.showMessageDialog(null,e.getMessage(), "FALLO", JOptionPane.ERROR_MESSAGE);
+		}
+		
+		return base64Image;
+	}
+	
 
 }
