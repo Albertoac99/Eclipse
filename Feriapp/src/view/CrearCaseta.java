@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,15 +8,14 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import java.awt.GridLayout;
 import javax.swing.JCheckBox;
-import java.awt.FlowLayout;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import java.awt.SystemColor;
 
-public class CrearCaseta extends JFrame {
+public class CrearCaseta extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -27,27 +25,15 @@ public class CrearCaseta extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CrearCaseta frame = new CrearCaseta();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	
+	
+	public CrearCaseta() {
+		
+		crearCaseta();
+		
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public CrearCaseta() {
+	public void crearCaseta() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 561, 327);
 		
