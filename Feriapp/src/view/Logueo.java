@@ -17,6 +17,8 @@ import controller.ContLogueo;
 
 import javax.swing.border.MatteBorder;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
@@ -35,6 +37,17 @@ public class Logueo extends JFrame {
 	}
 	
 	public void logueo() {
+		
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent evt) {
+				if(ContLogueo.salir()) {
+					System.exit(0);
+				}
+				else {
+					setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+				}
+			}
+		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setBounds(100, 100, 366, 351);

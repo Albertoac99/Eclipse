@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.ContListaCasetas;
+import controller.ContLogueo;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -16,6 +17,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.InputEvent;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
@@ -32,11 +35,21 @@ public class ListaCasetas extends JDialog {
 	public ListaCasetas() {
 		
 		listaCasetas();
-		ContListaCasetas.generarTabla();
+		ContListaCasetas.generarTabla("https://arandacastroalberto.000webhostapp.com/php/getCasetas.php");
 		
 	}
 	
 	public void listaCasetas() {
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent evt) {
+				if(ContListaCasetas.salir()) {
+					System.exit(0);
+				}
+				else {
+					setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+				}
+			}
+		});
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 973, 431);
 		
@@ -47,6 +60,13 @@ public class ListaCasetas extends JDialog {
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmAdministracin = new JMenuItem("Administraci\u00F3n");
+		mntmAdministracin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				AdminCasetas adminCasetas = new AdminCasetas();
+				adminCasetas.setVisible(true);
+			}
+		});
 		mntmAdministracin.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmAdministracin);
 		
@@ -54,18 +74,46 @@ public class ListaCasetas extends JDialog {
 		mnNewMenu.add(mnFiltrar);
 		
 		JMenuItem mntmCasetasPblicas = new JMenuItem("Casetas P\u00FAblicas");
+		mntmCasetasPblicas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ContListaCasetas.generarTabla("https://arandacastroalberto.000webhostapp.com/php/getCasetaLibre.php?tipoCaseta=0");
+			}
+		});
 		mnFiltrar.add(mntmCasetasPblicas);
 		
 		JMenuItem mntmCasetasPrivadas = new JMenuItem("Casetas Privadas");
+		mntmCasetasPrivadas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ContListaCasetas.generarTabla("https://arandacastroalberto.000webhostapp.com/php/getCasetaLibre.php?tipoCaseta=1");
+			}
+		});
 		mnFiltrar.add(mntmCasetasPrivadas);
 		
 		JMenuItem mntmCasetasConAforo = new JMenuItem("Casetas Con Aforo");
+		mntmCasetasConAforo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ContListaCasetas.generarTabla("https://arandacastroalberto.000webhostapp.com/php/getCasetasAforo.php");
+			}
+		});
 		mnFiltrar.add(mntmCasetasConAforo);
+		
+		JMenuItem mntmMostrarTodas = new JMenuItem("Mostrar Todas");
+		mntmMostrarTodas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ContListaCasetas.generarTabla("https://arandacastroalberto.000webhostapp.com/php/getCasetas.php");
+			}
+		});
+		mnFiltrar.add(mntmMostrarTodas);
 		
 		JSeparator separator_1 = new JSeparator();
 		mnNewMenu.add(separator_1);
 		
 		JMenuItem mntmSalirDeLa = new JMenuItem("Salir de la aplicaci\u00F3n");
+		mntmSalirDeLa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 		mnNewMenu.add(mntmSalirDeLa);
 		
 		JMenu mnPerfil = new JMenu("Perfil");
@@ -86,6 +134,13 @@ public class ListaCasetas extends JDialog {
 		mnPerfil.add(separator);
 		
 		JMenuItem mntmCerrarSesin = new JMenuItem("Cerrar Sesi\u00F3n");
+		mntmCerrarSesin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Logueo logueo = new Logueo();
+				logueo.setVisible(true);
+			}
+		});
 		mnPerfil.add(mntmCerrarSesin);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

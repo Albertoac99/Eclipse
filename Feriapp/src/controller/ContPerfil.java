@@ -7,6 +7,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 import logic.LogFeriapp;
 import view.Perfil;
@@ -25,7 +26,7 @@ public class ContPerfil {
 
 			Image image = ImageIO.read(archivo);
 
-			Perfil.lblFotoPerfil.setIcon(new ImageIcon(image));
+			Perfil.lblFotoPerfil.setIcon(new ImageIcon(image.getScaledInstance(114, 113, Image.SCALE_SMOOTH)));
 
 
 		} catch (Exception e) {
@@ -56,7 +57,27 @@ public class ContPerfil {
 			
 			String path = "https://arandacastroalberto.000webhostapp.com/php/imagen.php";
 			LogFeriapp.subirImagen(path);
+			JOptionPane.showMessageDialog(null,"La imagen ha sido subida correctamente", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
 			
+	}
+
+	public static void guardarCambios() {
+		
+		String usuarioNuevo = Perfil.txtNuevoUsuario.getText().toString();
+		String contraseniaNueva = Perfil.txtNuevaContraseña.getText().toString();
+		String usuario = ContLogueo.lstCuentas.get(0).getUsuario();
+		
+		String url = "https://arandacastroalberto.000webhostapp.com/php/updateUsuario.php?usuarioNuevo="+usuarioNuevo+"&contraseniaNueva="+contraseniaNueva+"&usuario="+usuario;
+		
+		try {
+			LogFeriapp.peticionHttp(url);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		JOptionPane.showMessageDialog(null,"Los datos han sido actulizados correctamente", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
+		
+		
 	}
 	
 

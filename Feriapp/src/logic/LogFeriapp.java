@@ -31,6 +31,16 @@ import model.Cuenta;
 
 public class LogFeriapp {
 	
+	public static boolean salir() {
+		boolean bSalir;
+		if (JOptionPane.showConfirmDialog(null, "¿Desea salir de Feriapp?", "Confirmar Salir", JOptionPane.YES_OPTION) == JOptionPane.YES_OPTION) {
+			bSalir = true;
+		}
+		else {
+			bSalir = false;
+		}
+		return bSalir;
+	}
 	
 	public static void errorIniciar() {
 		
@@ -194,7 +204,6 @@ public class LogFeriapp {
 		http.connect();
 		http.getOutputStream().write(out);
 		
-		JOptionPane.showMessageDialog(null,"La imagen ha sido subida correctamente", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

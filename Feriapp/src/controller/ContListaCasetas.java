@@ -13,10 +13,8 @@ public class ContListaCasetas {
 	
 	private static List<Caseta> casetas;
 	
-	public static void generarTabla() {
+	public static void generarTabla(String url) {
 		
-		
-	String url = "https://arandacastroalberto.000webhostapp.com/php/getCasetas.php";
 	String respuesta;
 	try {
 		respuesta = LogFeriapp.peticionHttp(url);
@@ -28,7 +26,19 @@ public class ContListaCasetas {
 		e.printStackTrace();
 	}
 	}
-	
+
+	public static boolean salir() {
+		boolean bSalir;
+		
+		if(LogFeriapp.salir()) {
+			bSalir = true;
+		}
+		else {
+			bSalir = false;
+		}
+		
+		return bSalir;
+	}
 	
 
 }

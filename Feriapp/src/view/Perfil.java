@@ -21,8 +21,8 @@ public class Perfil extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField txtNuevoUsuario;
-	private JPasswordField txtNuevaContraseña;
+	public static JTextField txtNuevoUsuario;
+	public static JPasswordField txtNuevaContraseña;
 	public static JLabel lblFotoPerfil;
 
 	public Perfil() {
@@ -56,14 +56,20 @@ public class Perfil extends JDialog {
 		panel.add(txtNuevoUsuario);
 		txtNuevoUsuario.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Cambiar Foto");
-		btnNewButton.setBounds(76, 149, 114, 23);
-		panel.add(btnNewButton);
+		JButton btnCambiarFoto = new JButton("Cambiar Foto");
+		btnCambiarFoto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ContPerfil.seleccionarFichero();
+				ContPerfil.upload();
+			}
+		});
+		btnCambiarFoto.setBounds(76, 149, 114, 23);
+		panel.add(btnCambiarFoto);
 		
 		JButton btnGuardarCambios = new JButton("Guardar Cambios");
 		btnGuardarCambios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ContPerfil.
+				ContPerfil.guardarCambios();
 			}
 		});
 		btnGuardarCambios.setBounds(69, 292, 133, 23);

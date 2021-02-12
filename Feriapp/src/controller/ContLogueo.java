@@ -48,4 +48,17 @@ public class ContLogueo {
 		
 	}
 
+	public static boolean salir() {
+		boolean bSalir;
+		
+		if(LogFeriapp.salir()) {
+			bSalir = true;
+		}
+		else {
+			bSalir = false;
+		}
+		
+		return bSalir;
+	}
+
 }
