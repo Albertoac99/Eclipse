@@ -1,8 +1,7 @@
 package view;
 
 
-
-import controller.ContPrincipal;
+import logic.LogPrincipal;
 
 public class Principal {
 	
@@ -11,9 +10,9 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
-		//ContPrincipal.escritura(FILE_NAME_OBJ);
+		//LogPrincipal.escritura(FILE_NAME_OBJ);
 		
-		ContPrincipal.convert_file_object_to_xml(FILE_NAME_OBJ,FILE_NAME_XML);
+		LogPrincipal.convert_file_object_to_xml(FILE_NAME_OBJ,FILE_NAME_XML);
 		
 	}
 	
