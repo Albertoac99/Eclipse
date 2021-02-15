@@ -23,7 +23,7 @@ public class ContListaCasetas {
 		ListaCasetas.table.setModel(modelo);
 		
 	 }catch (Exception e) {	
-		e.printStackTrace();
+		LogFeriapp.error(e.getMessage());
 	}
 	}
 

@@ -28,7 +28,7 @@ public class ContLogueo {
 			
 			 }catch (Exception e) {
 				
-				e.printStackTrace();
+				LogFeriapp.error(e.getMessage());
 			}
 			if(lstCuentas.isEmpty()) {
 				bExito = false;
@@ -44,7 +44,7 @@ public class ContLogueo {
 
 	public static void errorSesion() {
 		
-		LogFeriapp.errorIniciar();
+		JOptionPane.showMessageDialog(null, "El usuario o la contraseña son incorrectos", "Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);
 		
 	}
 

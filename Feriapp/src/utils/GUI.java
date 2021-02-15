@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
+import logic.LogFeriapp;
 import model.Caseta;
 
 public class GUI {
@@ -23,7 +24,7 @@ public static DefaultTableModel generarTabla(List<Caseta> resultado) throws SQLE
 		
 		for(Caseta c : resultado) {
 				
-		modelo.addRow(new Object[] {c.getNumeroCaseta(),c.getNombreCaseta(),c.getNombreCalle(),c.getAforoMaximo(),c.getAforoActual(),c.getHorario(),c.getTipoCaseta()});
+		modelo.addRow(new Object[] {c.getNumeroCaseta(),c.getNombreCaseta(),c.getNombreCalle(),c.getAforoMaximo(),c.getAforoActual(),c.getHorario(),LogFeriapp.tipoCaseta(c)});
 
 		}
 		

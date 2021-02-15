@@ -6,6 +6,7 @@ import javax.swing.table.DefaultTableModel;
 
 import logic.LogFeriapp;
 import model.Caseta;
+import sun.java2d.Disposer;
 import utils.GUI;
 import view.AdminCasetas;
 
@@ -32,6 +33,19 @@ public class ContAdminCasetas {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public static boolean salir() {
+		boolean bSalir;
+		
+		if(LogFeriapp.salir()) {
+			bSalir = true;
+		}
+		else {
+			bSalir = false;
+		}
+		
+		return bSalir;
 	}
 
 }

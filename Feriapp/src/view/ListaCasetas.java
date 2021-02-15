@@ -25,6 +25,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class ListaCasetas extends JDialog {
 
@@ -33,6 +34,8 @@ public class ListaCasetas extends JDialog {
 	public static JTable table  = new JTable();
 
 	public ListaCasetas() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\icono.png"));
+		setTitle("Casetas");
 		
 		listaCasetas();
 		ContListaCasetas.generarTabla("https://arandacastroalberto.000webhostapp.com/php/getCasetas.php");

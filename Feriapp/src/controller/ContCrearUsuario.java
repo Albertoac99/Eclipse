@@ -1,5 +1,7 @@
 package controller;
 
+import javax.swing.JOptionPane;
+
 import logic.LogFeriapp;
 import view.CrearUsuario;
 
@@ -23,7 +25,7 @@ public class ContCrearUsuario {
 				nombreUsuario = LogFeriapp.JsonToComprobarCuenta(respuesta);
 			 }catch (Exception e) {
 				
-				e.printStackTrace();
+				LogFeriapp.error(e.getMessage());
 			}
 			if(nombreUsuario==null) {
 				
@@ -32,7 +34,7 @@ public class ContCrearUsuario {
 					LogFeriapp.peticionHttp(url);
 				} catch (Exception e) {
 					
-					e.printStackTrace();
+					LogFeriapp.error(e.getMessage());
 				}
 				bExito = true;
 			}
@@ -59,7 +61,7 @@ public class ContCrearUsuario {
 
 	public static void errorCrear() {
 	
-		LogFeriapp.errorCrear();
+		JOptionPane.showMessageDialog(null, "Ya existe un usuario con ese nombre, por favor introduca otro", "Error al crear usuario", JOptionPane.ERROR_MESSAGE);
 		
 	}
 

@@ -1,30 +1,27 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.border.MatteBorder;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import controller.ContCrearCaseta;
+import controller.ContModificarCaseta;
 
-import java.awt.Color;
-import java.awt.SystemColor;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.Font;
-import java.awt.Toolkit;
-
-public class CrearCaseta extends JDialog {
+public class ModificarCaseta extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -33,51 +30,34 @@ public class CrearCaseta extends JDialog {
 	public static JTextField txtAforoActual;
 	public static JTextField txtAforoMaximo;
 	public static JTextField txtHoraApertura;
-	public static JTextField txtHoraCierre;
-	public static JComboBox comboBox;
 	public static JCheckBox chckbxCasetaPrivada;
 	private Font font = new Font("Comic Sans MS", Font.PLAIN, 11);
+	public static JTextField txtNombreCalle;
 	
-	
-	public CrearCaseta() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\icono.png"));
-		setTitle("Crear Caseta");
-		
-		crearCaseta();
-		ContCrearCaseta.mostrarCalles();
-		
+	public ModificarCaseta() {
+		modificarCaseta();
+		ContModificarCaseta.insertarDatos();
 	}
-
-	public void crearCaseta() {
+	
+	public void modificarCaseta() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 561, 327);
-		
+		setModal(true);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.setBackground(new Color(199,238,174));
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(199,238,174));
-		panel_1.setBorder(new MatteBorder(0, 0, 1, 0, (Color) SystemColor.activeCaption));
-		contentPane.add(panel_1, BorderLayout.NORTH);
-		
-		JLabel lblRelleneLosSiguientes = new JLabel("Rellene los siguientes campos para registrar una nueva caseta:");
-		lblRelleneLosSiguientes.setFont(font);
-		panel_1.add(lblRelleneLosSiguientes);
-		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(199,238,174));
 		contentPane.add(panel_2, BorderLayout.SOUTH);
 		
-		JButton btnCrearCaseta = new JButton("Crear Caseta");
-		btnCrearCaseta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ContCrearCaseta.crearCaseta();
-			}
-		});
-		panel_2.add(btnCrearCaseta);
+		JButton btnActualizarCaseta = new JButton("Actualizar Caseta");
+		panel_2.add(btnActualizarCaseta);
+		
+		JButton btnBorrarCaseta = new JButton("Borrar Caseta");
+		panel_2.add(btnBorrarCaseta);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(199,238,174));
@@ -95,11 +75,15 @@ public class CrearCaseta extends JDialog {
 		panel.add(lblNombreCaseta);
 		
 		txtNombreCaseta = new JTextField();
+		txtNombreCaseta.setEditable(false);
+		txtNombreCaseta.setEnabled(false);
 		txtNombreCaseta.setBounds(248, 11, 153, 20);
 		panel.add(txtNombreCaseta);
 		txtNombreCaseta.setColumns(10);
 		
 		txtNumeroCaseta = new JTextField();
+		txtNumeroCaseta.setEnabled(false);
+		txtNumeroCaseta.setEditable(false);
 		txtNumeroCaseta.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -114,10 +98,6 @@ public class CrearCaseta extends JDialog {
 		lblNombreCalle.setBounds(25, 98, 107, 14);
 		lblNombreCalle.setFont(font);
 		panel.add(lblNombreCalle);
-		
-		comboBox = new JComboBox();
-		comboBox.setBounds(143, 94, 86, 22);
-		panel.add(comboBox);
 		
 		JLabel lblAforoActual = new JLabel("Aforo Actual:");
 		lblAforoActual.setFont(font);
@@ -151,30 +131,27 @@ public class CrearCaseta extends JDialog {
 		panel.add(txtAforoMaximo);
 		txtAforoMaximo.setColumns(10);
 		
-		JLabel lblHoraApertura = new JLabel("Hora apertura:");
-		lblHoraApertura.setBounds(287, 153, 94, 14);
+		JLabel lblHoraApertura = new JLabel("Hora:");
+		lblHoraApertura.setBounds(287, 168, 94, 14);
 		lblHoraApertura.setFont(font);
 		panel.add(lblHoraApertura);
 		
-		JLabel lblHoraCierrehhmm = new JLabel("Hora cierre:");
-		lblHoraCierrehhmm.setBounds(287, 189, 94, 14);
-		lblHoraCierrehhmm.setFont(font);
-		panel.add(lblHoraCierrehhmm);
-		
 		txtHoraApertura = new JTextField();
-		txtHoraApertura.setBounds(426, 150, 86, 20);
+		txtHoraApertura.setBounds(426, 166, 86, 20);
 		panel.add(txtHoraApertura);
 		txtHoraApertura.setColumns(10);
-		
-		txtHoraCierre = new JTextField();
-		txtHoraCierre.setBounds(426, 186, 86, 20);
-		panel.add(txtHoraCierre);
-		txtHoraCierre.setColumns(10);
 		
 		chckbxCasetaPrivada = new JCheckBox("Caseta Privada");
 		chckbxCasetaPrivada.setFont(font);
 		chckbxCasetaPrivada.setBackground(new Color(199,238,174));
 		chckbxCasetaPrivada.setBounds(59, 164, 132, 23);
 		panel.add(chckbxCasetaPrivada);
+		
+		txtNombreCalle = new JTextField();
+		txtNombreCalle.setEnabled(false);
+		txtNombreCalle.setEditable(false);
+		txtNombreCalle.setBounds(142, 96, 86, 20);
+		panel.add(txtNombreCalle);
+		txtNombreCalle.setColumns(10);
 	}
 }

@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 
 import java.awt.Font;
@@ -21,6 +22,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import java.awt.Toolkit;
 
 public class Logueo extends JFrame {
 
@@ -31,6 +33,8 @@ public class Logueo extends JFrame {
 
 	
 	public Logueo() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\icono.png"));
+		setTitle("Logueo");
 		
 		logueo();
 		

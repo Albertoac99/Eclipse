@@ -16,6 +16,7 @@ import javax.swing.JDialog;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class Perfil extends JDialog {
 
@@ -26,6 +27,8 @@ public class Perfil extends JDialog {
 	public static JLabel lblFotoPerfil;
 
 	public Perfil() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\icono.png"));
+		setTitle("Perfil");
 		perfil();
 		ContPerfil.download();
 		txtNuevoUsuario.setText(ContLogueo.lstCuentas.get(0).getUsuario());

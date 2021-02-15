@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import java.awt.Toolkit;
 
 public class CrearUsuario extends JDialog {
 
@@ -27,6 +28,8 @@ public class CrearUsuario extends JDialog {
 
 	
 	public CrearUsuario() {
+		setTitle("Crear Usuario");
+		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\icono.png"));
 		
 		crearUsuario();
 		

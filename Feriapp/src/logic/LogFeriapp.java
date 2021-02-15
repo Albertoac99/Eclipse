@@ -1,5 +1,6 @@
 package logic;
 
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,6 +26,7 @@ import org.json.JSONObject;
 
 import controller.ContLogueo;
 import controller.ContPerfil;
+import model.Calle;
 import model.Caseta;
 import model.Cuenta;
 
@@ -42,14 +44,8 @@ public class LogFeriapp {
 		return bSalir;
 	}
 	
-	public static void errorIniciar() {
-		
-		JOptionPane.showMessageDialog(null, "El usuario o la contraseña son incorrectos", "Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);
-	}
-
-	public static void errorCrear() {
-		
-		JOptionPane.showMessageDialog(null, "Ya existe un usuario con ese nombre, por favor introduca otro", "Error al crear usuario", JOptionPane.ERROR_MESSAGE);
+	public static void error(String e) {
+		JOptionPane.showMessageDialog(null, "Error: "+e, "Error", JOptionPane.ERROR_MESSAGE);
 	}
 	
 	public static List<Cuenta> JsonToCuentas(String respuesta) {
@@ -79,6 +75,34 @@ public class LogFeriapp {
 		 int tipoUsuario = jsonO.getInt("tipoUsuario");
 		
 		 Cuenta c = new Cuenta(idCuenta,usuario,contrasenia,tipoUsuario);
+		
+		return c;
+	}
+	
+	public static List<Calle> JsonToCalles(String respuesta) {
+		
+		List<Calle> lstResultado = new ArrayList<>();
+		
+		JSONArray jsonA = new JSONArray(respuesta);
+		
+		for(int i= 0; i<jsonA.length(); i++) {
+			
+			JSONObject jsonO = jsonA.getJSONObject(i);
+			
+			Calle c = JsonToCalle(jsonO);
+					
+			lstResultado.add(c);
+			
+		}
+		
+		return lstResultado;
+	}
+
+	private static Calle JsonToCalle(JSONObject jsonO) {
+
+		 String nombreCalle = jsonO.getString("nombreCalle");
+		
+		 Calle c = new Calle(nombreCalle);
 		
 		return c;
 	}
@@ -227,6 +251,31 @@ public class LogFeriapp {
 		}
 		
 		return base64Image;
+	}
+	
+	public static boolean caracteres(KeyEvent e) {
+		if(e.getKeyChar()!="0".charAt(0) && e.getKeyChar()!="1".charAt(0) && e.getKeyChar()!="2".charAt(0) && e.getKeyChar()!="3".charAt(0) && e.getKeyChar()!="4".charAt(0) 
+				&& e.getKeyChar()!="5".charAt(0) && e.getKeyChar()!="6".charAt(0) && e.getKeyChar()!="7".charAt(0) && e.getKeyChar()!="8".charAt(0) &&
+				e.getKeyChar()!="9".charAt(0)) {
+			return true;
+			
+		}
+		else {
+			return false;
+		}
+	}
+
+	public static String tipoCaseta(Caseta c) {
+		String resultado;
+		
+		if(c.getTipoCaseta() == 1) {
+			resultado = "Privada";
+		}
+		else {
+			resultado = "Pública";
+		}
+		
+		return resultado;
 	}
 	
 
