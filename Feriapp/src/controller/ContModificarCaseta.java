@@ -1,5 +1,8 @@
 package controller;
 
+import javax.swing.JOptionPane;
+
+import logic.LogFeriapp;
 import view.AdminCasetas;
 import view.ModificarCaseta;
 
@@ -29,6 +32,71 @@ public class ContModificarCaseta {
 			bPrivada = false;
 		}
 		return bPrivada;
+	}
+
+	public static void actualizarCaseta() {
+		
+		int aforoMaximo= Integer.parseInt(ModificarCaseta.txtAforoMaximo.getText().toString());
+		int aforoActual= Integer.parseInt(ModificarCaseta.txtAforoActual.getText().toString());
+		String horario = ModificarCaseta.txtHoraApertura.getText().toString();
+		int tipoCaseta= cambioCaseta();
+		int numeroCaseta = Integer.parseInt(ModificarCaseta.txtNumeroCaseta.getText().toString());
+		
+		String url = "https://arandacastroalberto.000webhostapp.com/php/updateCaseta.php?aforoMaximo="+aforoMaximo+"&aforoActual="+aforoActual+"&horario="+horario+"&tipoCaseta="+tipoCaseta+"&numeroCaseta="+numeroCaseta;
+		
+		try {
+			LogFeriapp.peticionHttp(url);
+		} catch (Exception e) {
+			LogFeriapp.error(e.getMessage());
+		}
+		
+		ContAdminCasetas.casetasPropias();		
+		
+	}
+
+	private static int cambioCaseta() {
+		int tipoCaseta;
+		
+		if(ModificarCaseta.chckbxCasetaPrivada.isSelected()) {
+			tipoCaseta = 1;
+		}
+		else {
+			tipoCaseta = 0;
+		}
+		
+		return tipoCaseta;
+	}
+
+	public static void casetaActualizada() {
+		
+		JOptionPane.showMessageDialog(null, "Los datos de la caseta han sido actulizados correctamente", "Actualización", JOptionPane.INFORMATION_MESSAGE);
+		
+	}
+
+	public static boolean borrarCaseta() {
+		boolean bBorrado;
+		
+		if(JOptionPane.showConfirmDialog(null, "¿Desea salir de Feriapp?", "Confirmar Salir", JOptionPane.YES_OPTION) == JOptionPane.YES_OPTION) {
+			int numeroCaseta = 	Integer.parseInt(ModificarCaseta.txtNumeroCaseta.getText().toString());
+		
+			String url = "https://arandacastroalberto.000webhostapp.com/php/borrarCaseta.php?numeroCaseta="+numeroCaseta;
+		
+			try {
+				LogFeriapp.peticionHttp(url);
+			} catch (Exception e) {
+				LogFeriapp.error(e.getMessage());
+			}
+		
+			ContAdminCasetas.casetasPropias();	
+			
+			bBorrado = true;
+		}
+		else {
+			bBorrado = false;
+		}
+		
+			
+		return bBorrado;
 	}
 
 	

@@ -39,6 +39,19 @@ public class ContListaCasetas {
 		
 		return bSalir;
 	}
+
+	public static void permisos() {
+		
+		if(ContLogueo.lstCuentas.get(0).getTipoUsuario()==1) {
+			ListaCasetas.mntmAdministracin.setEnabled(true);
+		}
+		else {
+			ListaCasetas.mntmAdministracin.setEnabled(false);
+		}
+		
+		
+		
+	}
 	
 
 }

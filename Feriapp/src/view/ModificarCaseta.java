@@ -10,7 +10,6 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -54,9 +53,23 @@ public class ModificarCaseta extends JDialog {
 		contentPane.add(panel_2, BorderLayout.SOUTH);
 		
 		JButton btnActualizarCaseta = new JButton("Actualizar Caseta");
+		btnActualizarCaseta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ContModificarCaseta.actualizarCaseta();
+				dispose();
+				ContModificarCaseta.casetaActualizada();
+			}
+		});
 		panel_2.add(btnActualizarCaseta);
 		
 		JButton btnBorrarCaseta = new JButton("Borrar Caseta");
+		btnBorrarCaseta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(ContModificarCaseta.borrarCaseta()) {
+					dispose();
+				}
+			}
+		});
 		panel_2.add(btnBorrarCaseta);
 		
 		JPanel panel = new JPanel();

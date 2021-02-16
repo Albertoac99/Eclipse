@@ -32,6 +32,7 @@ public class ListaCasetas extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public static JTable table  = new JTable();
+	public static JMenuItem mntmAdministracin;
 
 	public ListaCasetas() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\icono.png"));
@@ -39,7 +40,7 @@ public class ListaCasetas extends JDialog {
 		
 		listaCasetas();
 		ContListaCasetas.generarTabla("https://arandacastroalberto.000webhostapp.com/php/getCasetas.php");
-		
+		ContListaCasetas.permisos();
 	}
 	
 	public void listaCasetas() {
@@ -62,7 +63,7 @@ public class ListaCasetas extends JDialog {
 		JMenu mnNewMenu = new JMenu("Opciones");
 		menuBar.add(mnNewMenu);
 		
-		JMenuItem mntmAdministracin = new JMenuItem("Administraci\u00F3n");
+		mntmAdministracin = new JMenuItem("Administraci\u00F3n");
 		mntmAdministracin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
