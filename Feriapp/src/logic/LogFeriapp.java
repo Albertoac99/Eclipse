@@ -4,8 +4,12 @@ import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -276,6 +280,45 @@ public class LogFeriapp {
 		}
 		
 		return resultado;
+	}
+	
+	public static void writeDataObject(String FILE_NAME, List<Cuenta> listado) {
+		try {
+			
+			ObjectOutputStream fch = new ObjectOutputStream(new FileOutputStream(FILE_NAME));
+			
+			for(Cuenta c : listado) {
+				fch.writeObject(c);
+			}
+			fch.close();	
+		} catch (FileNotFoundException e) {
+			error(e.getMessage());
+		} catch (IOException e) {
+			error(e.getMessage());
+		}
+		
+	}
+	
+	public static List<Cuenta> readDataObject(String FILE_NAME) {
+		List<Cuenta> listado = new ArrayList<Cuenta>();
+		
+		try {
+			
+			ObjectInputStream fch = new ObjectInputStream(new FileInputStream(FILE_NAME));
+			
+			Object obj = fch.readObject();
+			
+			while(obj!=null) {
+				if(obj instanceof Cuenta) {
+					listado.add((Cuenta) obj);
+				}
+				obj = fch.readObject();
+			}	
+			fch.close();
+		} catch (IOException e) {
+		} catch (ClassNotFoundException e) {
+		}
+		return listado;
 	}
 	
 

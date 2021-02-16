@@ -1,7 +1,10 @@
 package model;
 
-public class Cuenta {
+import java.io.Serializable;
+
+public class Cuenta implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private int idCuenta;
     private String usuario;
     private String contrasenia;

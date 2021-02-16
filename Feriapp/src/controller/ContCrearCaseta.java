@@ -34,7 +34,8 @@ public class ContCrearCaseta {
 		
 	}
 
-	public static void crearCaseta() {
+	public static boolean crearCaseta() {
+		boolean bExito = false;
 		
 		if(comprobaciones()) {
 			
@@ -52,15 +53,19 @@ public class ContCrearCaseta {
 			
 			try {
 				LogFeriapp.peticionHttp(url);
+				bExito = true;
+				ContAdminCasetas.casetasPropias();
 				JOptionPane.showMessageDialog(null, "La caseta se ha creado correctamente");
 			} catch (Exception e) {
 				LogFeriapp.error(e.getMessage());
 			}
 		}
 		else {
+			bExito = false;
 			JOptionPane.showMessageDialog(null, "Rellene todos los campos", "Error al crear caseta", JOptionPane.ERROR_MESSAGE);
 		}
 		
+		return bExito;
 	}
 
 	private static int tipoCaseta() {

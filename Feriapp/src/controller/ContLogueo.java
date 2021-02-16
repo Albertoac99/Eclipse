@@ -10,6 +10,7 @@ import view.Logueo;
 
 public class ContLogueo {
 	public static List<Cuenta> lstCuentas;
+	public static String rutaPreferencias = "dat\\preferencias.dat";
 
 	public static boolean iniciarSesion() {
 		boolean bExito;
@@ -59,6 +60,27 @@ public class ContLogueo {
 		}
 		
 		return bSalir;
+	}
+
+	public static boolean preferencias() {
+		boolean bExito;
+		
+		lstCuentas = LogFeriapp.readDataObject(rutaPreferencias);
+		
+		if(lstCuentas.isEmpty()) {
+			bExito = false;
+		}
+		else {
+			bExito = true;
+		}
+		return bExito;
+	}
+
+	public static void guardarDatos() {
+		if (JOptionPane.showConfirmDialog(null, "¿Recordar usuario y contraseña?", "Guardar Datos", JOptionPane.YES_OPTION) == JOptionPane.YES_OPTION) {
+			LogFeriapp.writeDataObject(rutaPreferencias, lstCuentas);
+		}
+		
 	}
 
 }

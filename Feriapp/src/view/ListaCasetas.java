@@ -14,6 +14,7 @@ import controller.ContLogueo;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
@@ -71,7 +72,7 @@ public class ListaCasetas extends JDialog {
 				adminCasetas.setVisible(true);
 			}
 		});
-		mntmAdministracin.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
+		mntmAdministracin.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmAdministracin);
 		
 		JMenu mnFiltrar = new JMenu("Filtrar");
@@ -115,7 +116,12 @@ public class ListaCasetas extends JDialog {
 		JMenuItem mntmSalirDeLa = new JMenuItem("Salir de la aplicaci\u00F3n");
 		mntmSalirDeLa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				if(ContListaCasetas.salir()) {
+					System.exit(0);
+				}
+				else {
+					setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+				}
 			}
 		});
 		mnNewMenu.add(mntmSalirDeLa);
@@ -157,6 +163,7 @@ public class ListaCasetas extends JDialog {
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
 		table = new JTable();
+		table.setEnabled(false);
 		table.setBackground(new Color(199,238,174));
 		scrollPane.setViewportView(table);
 		

@@ -46,11 +46,10 @@ public class ContModificarCaseta {
 		
 		try {
 			LogFeriapp.peticionHttp(url);
+			ContAdminCasetas.casetasPropias();
 		} catch (Exception e) {
 			LogFeriapp.error(e.getMessage());
-		}
-		
-		ContAdminCasetas.casetasPropias();		
+		}		
 		
 	}
 

@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JButton;
 
 import java.awt.Font;
@@ -36,8 +35,14 @@ public class Logueo extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\icono.png"));
 		setTitle("Logueo");
 		
-		logueo();
-		
+		if(ContLogueo.preferencias()) {
+			dispose();
+			ListaCasetas casetas = new ListaCasetas();
+			casetas.setVisible(true);
+		}
+		else {
+			logueo();
+		}
 	}
 	
 	public void logueo() {
@@ -83,6 +88,7 @@ public class Logueo extends JFrame {
 		btnIniciarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(ContLogueo.iniciarSesion()) {
+					ContLogueo.guardarDatos();
 					dispose();
 					ListaCasetas listaCasetas = new ListaCasetas();
 					listaCasetas.setVisible(true);

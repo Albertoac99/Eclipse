@@ -74,7 +74,9 @@ public class CrearCaseta extends JDialog {
 		JButton btnCrearCaseta = new JButton("Crear Caseta");
 		btnCrearCaseta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ContCrearCaseta.crearCaseta();
+				if(ContCrearCaseta.crearCaseta()) {
+					dispose();
+				}
 			}
 		});
 		panel_2.add(btnCrearCaseta);
