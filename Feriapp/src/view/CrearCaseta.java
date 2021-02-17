@@ -49,6 +49,7 @@ public class CrearCaseta extends JDialog {
 	}
 
 	public void crearCaseta() {
+		setModal(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 561, 327);
 		

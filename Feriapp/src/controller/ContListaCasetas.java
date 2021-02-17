@@ -1,17 +1,19 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
 import logic.LogFeriapp;
 import model.Caseta;
+import model.Cuenta;
 import utils.GUI;
 import view.ListaCasetas;
 
 public class ContListaCasetas {
 	
-	private static List<Caseta> casetas;
+	public static List<Caseta> casetas;
 	
 	public static void generarTabla(String url) {
 		
@@ -50,6 +52,15 @@ public class ContListaCasetas {
 		}
 		
 		
+		
+	}
+
+	public static void desconexion() {
+		
+		List<Cuenta> cuentas = new ArrayList<>();
+		cuentas.add(new Cuenta(99,"","",3));
+		
+		LogFeriapp.writeDataObject(ContLogueo.rutaPreferencias, cuentas);
 		
 	}
 	

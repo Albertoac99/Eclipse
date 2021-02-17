@@ -3,6 +3,8 @@ package controller;
 import java.awt.Image;
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -10,6 +12,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import logic.LogFeriapp;
+import model.Cuenta;
 import view.Perfil;
 
 public class ContPerfil {
@@ -62,6 +65,7 @@ public class ContPerfil {
 	}
 
 	public static void guardarCambios() {
+		List<Cuenta> nuevaCuenta = new ArrayList<>();
 		
 		String usuarioNuevo = Perfil.txtNuevoUsuario.getText().toString();
 		String contraseniaNueva = Perfil.txtNuevaContraseña.getText().toString();
@@ -77,7 +81,9 @@ public class ContPerfil {
 		
 		JOptionPane.showMessageDialog(null,"Los datos han sido actulizados correctamente", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
 		
+		nuevaCuenta.add(new Cuenta(ContLogueo.lstCuentas.get(0).getIdCuenta(),usuarioNuevo, contraseniaNueva, ContLogueo.lstCuentas.get(0).getTipoUsuario()));
 		
+		ContLogueo.lstCuentas = nuevaCuenta;
 	}
 	
 

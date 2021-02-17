@@ -3,18 +3,15 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.ContListaCasetas;
-import controller.ContLogueo;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
@@ -28,7 +25,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 
-public class ListaCasetas extends JDialog {
+public class ListaCasetas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -149,9 +146,31 @@ public class ListaCasetas extends JDialog {
 				dispose();
 				Logueo logueo = new Logueo();
 				logueo.setVisible(true);
+				ContListaCasetas.desconexion();
 			}
 		});
 		mnPerfil.add(mntmCerrarSesin);
+		
+		JMenu mnEstadsticas = new JMenu("Estad\u00EDsticas");
+		menuBar.add(mnEstadsticas);
+		
+		JMenuItem mntmAforo = new JMenuItem("Aforo");
+		mntmAforo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EstadisticasAforo aforo = new EstadisticasAforo();
+				aforo.setVisible(true);				
+			}
+		});
+		mnEstadsticas.add(mntmAforo);
+		
+		JMenuItem mntmPblicaprivada = new JMenuItem("P\u00FAblica/Privada");
+		mntmPblicaprivada.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EstadisticasPublicaPrivada publicaPrivada = new EstadisticasPublicaPrivada();
+				publicaPrivada.setVisible(true);
+			}
+		});
+		mnEstadsticas.add(mntmPblicaprivada);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

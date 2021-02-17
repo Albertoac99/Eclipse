@@ -308,15 +308,15 @@ public class LogFeriapp {
 			
 			Object obj = fch.readObject();
 			
-			while(obj!=null) {
 				if(obj instanceof Cuenta) {
 					listado.add((Cuenta) obj);
 				}
-				obj = fch.readObject();
-			}	
+				
 			fch.close();
 		} catch (IOException e) {
+			error(e.getMessage());
 		} catch (ClassNotFoundException e) {
+			error(e.getMessage());
 		}
 		return listado;
 	}

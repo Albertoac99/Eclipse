@@ -23,7 +23,7 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class AdminCasetas extends JDialog {
+public class AdminCasetas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;

@@ -67,7 +67,7 @@ public class ContLogueo {
 		
 		lstCuentas = LogFeriapp.readDataObject(rutaPreferencias);
 		
-		if(lstCuentas.isEmpty()) {
+		if(lstCuentas.get(0).getUsuario().equals("")) {
 			bExito = false;
 		}
 		else {

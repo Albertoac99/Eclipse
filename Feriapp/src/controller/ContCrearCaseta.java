@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import logic.LogFeriapp;
 import model.Calle;
+import model.Caseta;
 import view.CrearCaseta;
 
 public class ContCrearCaseta {
@@ -47,25 +48,77 @@ public class ContCrearCaseta {
 			String horario = CrearCaseta.txtHoraApertura.getText().toString()+"-"+CrearCaseta.txtHoraCierre.getText().toString().replace(" ", "");
 			int tipoCaseta = tipoCaseta();
 			int idPropietario = ContLogueo.lstCuentas.get(0).getIdCuenta();
-			
-			String url = "https://arandacastroalberto.000webhostapp.com/php/insertarCaseta.php?numeroCaseta=" + numeroCaseta + "&nombreCaseta="+ nombreCaseta + "&nombreCalle="+ nombreCalle + "&aforoMaximo="+ aforoMaximo + 
-					"&aforoActual="+ aforoActual + "&horario="+ horario +"&tipoCaseta="+ tipoCaseta +"&idPropietario="+ idPropietario;
-			
 			try {
-				LogFeriapp.peticionHttp(url);
+			if(comprobarNombre(nombreCaseta)) {
+				JOptionPane.showMessageDialog(null, "Ya existe una caseta con ese nombre", "Error al crear caseta", JOptionPane.ERROR_MESSAGE);		
+			}
+			else {
+				if(comprobarNumero(numeroCaseta)) {
+					JOptionPane.showMessageDialog(null, "Ya existe una caseta con numero", "Error al crear caseta", JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+			
+				creacionCaseta(numeroCaseta, nombreCaseta, nombreCalle, aforoMaximo, aforoActual, horario, tipoCaseta, idPropietario);
 				bExito = true;
-				ContAdminCasetas.casetasPropias();
-				JOptionPane.showMessageDialog(null, "La caseta se ha creado correctamente");
+			}
+				}
 			} catch (Exception e) {
 				LogFeriapp.error(e.getMessage());
 			}
 		}
 		else {
 			bExito = false;
-			JOptionPane.showMessageDialog(null, "Rellene todos los campos", "Error al crear caseta", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Requisitos:\n	- Rellenar todos los campos\n	- Aforo actual debe ser menor o igual al máximo", "Error al crear caseta", JOptionPane.ERROR_MESSAGE);
 		}
 		
 		return bExito;
+	}
+
+	private static void creacionCaseta(int numeroCaseta, String nombreCaseta, String nombreCalle, int aforoMaximo,
+			int aforoActual, String horario, int tipoCaseta, int idPropietario) throws Exception {
+		String url = "https://arandacastroalberto.000webhostapp.com/php/insertarCaseta.php?numeroCaseta=" + numeroCaseta + "&nombreCaseta="+ nombreCaseta + "&nombreCalle="+ nombreCalle + "&aforoMaximo="+ aforoMaximo + 
+			"&aforoActual="+ aforoActual + "&horario="+ horario +"&tipoCaseta="+ tipoCaseta +"&idPropietario="+ idPropietario;
+
+		LogFeriapp.peticionHttp(url);
+		ContAdminCasetas.casetasPropias();
+		JOptionPane.showMessageDialog(null, "La caseta se ha creado correctamente");
+	}
+
+	private static boolean comprobarNumero(int numeroCaseta) throws Exception {
+		boolean bExiste;
+		String respuesta;
+		List<Caseta> casetasNumero;
+		
+		String urlNumero = "https://arandacastroalberto.000webhostapp.com/php/getCasetaNumero.php?numeroCaseta="+numeroCaseta;
+		
+		respuesta = LogFeriapp.peticionHttp(urlNumero);
+		casetasNumero = LogFeriapp.JsonToCasetas(respuesta);
+		
+		if(casetasNumero.isEmpty()) {
+			bExiste = false;
+		}
+		else {
+			bExiste = true;
+		}
+		return bExiste;
+	}
+
+	private static boolean comprobarNombre(String nombreCaseta) throws Exception {
+		boolean bExiste;
+		List<Caseta> casetasNombre;
+		String respuesta;
+		String urlNombre = "https://arandacastroalberto.000webhostapp.com/php/getCaseta.php?nombreCaseta="+nombreCaseta;
+		
+		respuesta = LogFeriapp.peticionHttp(urlNombre);
+		casetasNombre = LogFeriapp.JsonToCasetas(respuesta);
+		
+	if(casetasNombre.isEmpty()) {
+		bExiste = false;
+	}
+	else {
+		bExiste = true;
+	}
+		return bExiste;
 	}
 
 	private static int tipoCaseta() {
@@ -84,13 +137,25 @@ public class ContCrearCaseta {
 	private static boolean comprobaciones() {
 		boolean bExito;
 		
-		if(camposVacios()) {
+		if(camposVacios() || tamañoSuperado()) {
 			bExito = false;
 		}
 		else {
 			bExito = true;
 		}
 		return bExito;
+	}
+
+	private static boolean tamañoSuperado() {
+		boolean bSuperado;
+		
+		if(Integer.parseInt(CrearCaseta.txtAforoMaximo.getText().toString()) < Integer.parseInt(CrearCaseta.txtAforoActual.getText().toString())) {
+			bSuperado = true;
+		}
+		else {
+			bSuperado = false;
+		}
+		return bSuperado;
 	}
 
 	private static boolean camposVacios() {

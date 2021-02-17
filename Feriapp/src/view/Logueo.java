@@ -35,14 +35,8 @@ public class Logueo extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("img\\icono.png"));
 		setTitle("Logueo");
 		
-		if(ContLogueo.preferencias()) {
-			dispose();
-			ListaCasetas casetas = new ListaCasetas();
-			casetas.setVisible(true);
-		}
-		else {
-			logueo();
-		}
+		logueo();
+
 	}
 	
 	public void logueo() {

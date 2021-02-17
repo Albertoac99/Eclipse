@@ -71,7 +71,7 @@ public class FrmPintura extends JFrame {
 		
 		frameG.setBounds(0,0,300,250);
 		
-		contentPane.add(frameG);
+		//contentPane.add(frameG);
 		
 		
 		DefaultCategoryDataset data2 = new DefaultCategoryDataset();
@@ -95,7 +95,7 @@ public class FrmPintura extends JFrame {
 		frameG2.setSize(315,250);
 		frameG2.setLocation(350, 0);
 		
-		//contentPane.add(frameG2);
+		contentPane.add(frameG2);
 		
 		
 	}
