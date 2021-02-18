@@ -55,9 +55,10 @@ public class ModificarCaseta extends JDialog {
 		JButton btnActualizarCaseta = new JButton("Actualizar Caseta");
 		btnActualizarCaseta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ContModificarCaseta.actualizarCaseta();
+				if(ContModificarCaseta.actualizarCaseta()) {
 				dispose();
 				ContModificarCaseta.casetaActualizada();
+				}
 			}
 		});
 		panel_2.add(btnActualizarCaseta);

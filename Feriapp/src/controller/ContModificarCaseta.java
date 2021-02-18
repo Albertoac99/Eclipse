@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import logic.LogFeriapp;
 import view.AdminCasetas;
+import view.CrearCaseta;
 import view.ModificarCaseta;
 
 public class ContModificarCaseta {
@@ -34,22 +35,30 @@ public class ContModificarCaseta {
 		return bPrivada;
 	}
 
-	public static void actualizarCaseta() {
+	public static boolean actualizarCaseta() {
+		boolean bExito;
 		
-		int aforoMaximo= Integer.parseInt(ModificarCaseta.txtAforoMaximo.getText().toString());
-		int aforoActual= Integer.parseInt(ModificarCaseta.txtAforoActual.getText().toString());
-		String horario = ModificarCaseta.txtHoraApertura.getText().toString();
-		int tipoCaseta= cambioCaseta();
-		int numeroCaseta = Integer.parseInt(ModificarCaseta.txtNumeroCaseta.getText().toString());
-		
-		String url = "https://arandacastroalberto.000webhostapp.com/php/updateCaseta.php?aforoMaximo="+aforoMaximo+"&aforoActual="+aforoActual+"&horario="+horario+"&tipoCaseta="+tipoCaseta+"&numeroCaseta="+numeroCaseta;
-		
+		if(comprobaciones()) {
+			int aforoMaximo= Integer.parseInt(ModificarCaseta.txtAforoMaximo.getText().toString());
+			int aforoActual= Integer.parseInt(ModificarCaseta.txtAforoActual.getText().toString());
+			String horario = ModificarCaseta.txtHoraApertura.getText().toString();
+			int tipoCaseta= cambioCaseta();
+			int numeroCaseta = Integer.parseInt(ModificarCaseta.txtNumeroCaseta.getText().toString());
+			
+			String url = "https://arandacastroalberto.000webhostapp.com/php/updateCaseta.php?aforoMaximo="+aforoMaximo+"&aforoActual="+aforoActual+"&horario="+horario+"&tipoCaseta="+tipoCaseta+"&numeroCaseta="+numeroCaseta;
+			bExito = true;
 		try {
 			LogFeriapp.peticionHttp(url);
 			ContAdminCasetas.casetasPropias();
 		} catch (Exception e) {
 			LogFeriapp.error(e.getMessage());
-		}		
+		}
+		}
+		else {
+			bExito = false;
+			JOptionPane.showMessageDialog(null, "Requisitos:\n	- Rellenar todos los campos\n	- Aforo actual debe ser menor o igual al máximo", "Error al crear caseta", JOptionPane.ERROR_MESSAGE);
+		}
+		return bExito;
 		
 	}
 
@@ -96,6 +105,45 @@ public class ContModificarCaseta {
 		
 			
 		return bBorrado;
+	}
+	
+	private static boolean comprobaciones() {
+		boolean bExito;
+		
+		if(camposVacios() || tamañoSuperado()) {
+			bExito = false;
+		}
+		else {
+			bExito = true;
+		}
+		return bExito;
+	}
+
+	private static boolean tamañoSuperado() {
+		boolean bSuperado;
+		
+		if(Integer.parseInt(ModificarCaseta.txtAforoMaximo.getText().toString()) < Integer.parseInt(ModificarCaseta.txtAforoActual.getText().toString())) {
+			bSuperado = true;
+		}
+		else {
+			bSuperado = false;
+		}
+		return bSuperado;
+	}
+
+	private static boolean camposVacios() {
+		boolean bVacios;
+		
+		if( ModificarCaseta.txtAforoMaximo.getText().toString().equals("") || ModificarCaseta.txtAforoActual.getText().toString().equals("") ||
+				ModificarCaseta.txtHoraApertura.getText().toString().equals("")) {
+			
+			bVacios = true;
+		}
+		else {
+			bVacios = false;
+		}
+	
+		return bVacios;
 	}
 
 	

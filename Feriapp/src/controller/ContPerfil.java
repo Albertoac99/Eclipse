@@ -40,7 +40,7 @@ public class ContPerfil {
 
 	public static void download() {
 
-		String fileName = ""+ContLogueo.lstCuentas.get(0).getIdCuenta();
+		String fileName = ""+ContLogueo.lstCuentas.getIdCuenta();
 		String path = "https://arandacastroalberto.000webhostapp.com/php/imagenes/" +fileName + ".jpg";
 		
 		try {
@@ -69,7 +69,7 @@ public class ContPerfil {
 		
 		String usuarioNuevo = Perfil.txtNuevoUsuario.getText().toString();
 		String contraseniaNueva = Perfil.txtNuevaContraseña.getText().toString();
-		String usuario = ContLogueo.lstCuentas.get(0).getUsuario();
+		String usuario = ContLogueo.lstCuentas.getUsuario();
 		
 		String url = "https://arandacastroalberto.000webhostapp.com/php/updateUsuario.php?usuarioNuevo="+usuarioNuevo+"&contraseniaNueva="+contraseniaNueva+"&usuario="+usuario;
 		
@@ -81,9 +81,7 @@ public class ContPerfil {
 		
 		JOptionPane.showMessageDialog(null,"Los datos han sido actulizados correctamente", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
 		
-		nuevaCuenta.add(new Cuenta(ContLogueo.lstCuentas.get(0).getIdCuenta(),usuarioNuevo, contraseniaNueva, ContLogueo.lstCuentas.get(0).getTipoUsuario()));
-		
-		ContLogueo.lstCuentas = nuevaCuenta;
+		ContLogueo.lstCuentas = new Cuenta(ContLogueo.lstCuentas.getIdCuenta(),usuarioNuevo, contraseniaNueva, ContLogueo.lstCuentas.getTipoUsuario());
 	}
 	
 

@@ -31,8 +31,8 @@ public class Perfil extends JDialog {
 		setTitle("Perfil");
 		perfil();
 		ContPerfil.download();
-		txtNuevoUsuario.setText(ContLogueo.lstCuentas.get(0).getUsuario());
-		txtNuevaContraseña.setText(ContLogueo.lstCuentas.get(0).getContrasenia());
+		txtNuevoUsuario.setText(ContLogueo.lstCuentas.getUsuario());
+		txtNuevaContraseña.setText(ContLogueo.lstCuentas.getContrasenia());
 		
 	}
 	

@@ -44,7 +44,7 @@ public class ContListaCasetas {
 
 	public static void permisos() {
 		
-		if(ContLogueo.lstCuentas.get(0).getTipoUsuario()==1) {
+		if(ContLogueo.lstCuentas.getTipoUsuario()==1) {
 			ListaCasetas.mntmAdministracin.setEnabled(true);
 		}
 		else {

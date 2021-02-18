@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -9,7 +10,7 @@ import model.Cuenta;
 import view.Logueo;
 
 public class ContLogueo {
-	public static List<Cuenta> lstCuentas;
+	public static Cuenta lstCuentas;
 	public static String rutaPreferencias = "dat\\preferencias.dat";
 
 	public static boolean iniciarSesion() {
@@ -31,7 +32,7 @@ public class ContLogueo {
 				
 				LogFeriapp.error(e.getMessage());
 			}
-			if(lstCuentas.isEmpty()) {
+			if(lstCuentas == null) {
 				bExito = false;
 			}
 			else {
@@ -65,9 +66,9 @@ public class ContLogueo {
 	public static boolean preferencias() {
 		boolean bExito;
 		
-		lstCuentas = LogFeriapp.readDataObject(rutaPreferencias);
+		lstCuentas = LogFeriapp.readDataObject(rutaPreferencias).get(0);
 		
-		if(lstCuentas.get(0).getUsuario().equals("")) {
+		if(lstCuentas.getUsuario().equals("")) {
 			bExito = false;
 		}
 		else {
@@ -78,7 +79,9 @@ public class ContLogueo {
 
 	public static void guardarDatos() {
 		if (JOptionPane.showConfirmDialog(null, "¿Recordar usuario y contraseña?", "Guardar Datos", JOptionPane.YES_OPTION) == JOptionPane.YES_OPTION) {
-			LogFeriapp.writeDataObject(rutaPreferencias, lstCuentas);
+			List<Cuenta> cuentas = new ArrayList<>();
+			cuentas.add(lstCuentas);
+			LogFeriapp.writeDataObject(rutaPreferencias, cuentas);
 		}
 		
 	}

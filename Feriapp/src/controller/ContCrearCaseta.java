@@ -47,7 +47,7 @@ public class ContCrearCaseta {
 			int aforoActual = Integer.parseInt(CrearCaseta.txtAforoActual.getText().toString());
 			String horario = CrearCaseta.txtHoraApertura.getText().toString()+"-"+CrearCaseta.txtHoraCierre.getText().toString().replace(" ", "");
 			int tipoCaseta = tipoCaseta();
-			int idPropietario = ContLogueo.lstCuentas.get(0).getIdCuenta();
+			int idPropietario = ContLogueo.lstCuentas.getIdCuenta();
 			try {
 			if(comprobarNombre(nombreCaseta)) {
 				JOptionPane.showMessageDialog(null, "Ya existe una caseta con ese nombre", "Error al crear caseta", JOptionPane.ERROR_MESSAGE);		
@@ -84,17 +84,21 @@ public class ContCrearCaseta {
 		JOptionPane.showMessageDialog(null, "La caseta se ha creado correctamente");
 	}
 
-	private static boolean comprobarNumero(int numeroCaseta) throws Exception {
+	private static boolean comprobarNumero(int numeroCaseta){
 		boolean bExiste;
 		String respuesta;
-		List<Caseta> casetasNumero;
+		Caseta casetasNumero;
 		
 		String urlNumero = "https://arandacastroalberto.000webhostapp.com/php/getCasetaNumero.php?numeroCaseta="+numeroCaseta;
+		System.out.println("EEEEEEEEEEEEE");
+		try {
+			respuesta = LogFeriapp.peticionHttp(urlNumero);
+			casetasNumero = LogFeriapp.JsonToCasetas2(respuesta);
+		} catch (Exception e) {
+			casetasNumero = null;
+		}
 		
-		respuesta = LogFeriapp.peticionHttp(urlNumero);
-		casetasNumero = LogFeriapp.JsonToCasetas(respuesta);
-		
-		if(casetasNumero.isEmpty()) {
+		if(casetasNumero==null) {
 			bExiste = false;
 		}
 		else {
@@ -103,16 +107,19 @@ public class ContCrearCaseta {
 		return bExiste;
 	}
 
-	private static boolean comprobarNombre(String nombreCaseta) throws Exception {
+	private static boolean comprobarNombre(String nombreCaseta){
 		boolean bExiste;
-		List<Caseta> casetasNombre;
+		Caseta casetasNombre;
 		String respuesta;
 		String urlNombre = "https://arandacastroalberto.000webhostapp.com/php/getCaseta.php?nombreCaseta="+nombreCaseta;
+		try {
+			respuesta = LogFeriapp.peticionHttp(urlNombre);
+			casetasNombre = LogFeriapp.JsonToCasetas2(respuesta);
+		} catch (Exception e) {
+			casetasNombre=null;
+		}
 		
-		respuesta = LogFeriapp.peticionHttp(urlNombre);
-		casetasNombre = LogFeriapp.JsonToCasetas(respuesta);
-		
-	if(casetasNombre.isEmpty()) {
+	if(casetasNombre==null) {
 		bExiste = false;
 	}
 	else {

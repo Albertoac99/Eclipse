@@ -14,7 +14,7 @@ public class ContAdminCasetas {
 
 	public static void casetasPropias() {
 		
-		int idCuenta = ContLogueo.lstCuentas.get(0).getIdCuenta();
+		int idCuenta = ContLogueo.lstCuentas.getIdCuenta();
 		String url = "https://arandacastroalberto.000webhostapp.com/php/getCasetaId.php?idPropietario="+idCuenta;
 		String resultado;
 		List<Caseta> lstCasetas;

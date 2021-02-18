@@ -52,23 +52,15 @@ public class LogFeriapp {
 		JOptionPane.showMessageDialog(null, "Error: "+e, "Error", JOptionPane.ERROR_MESSAGE);
 	}
 	
-	public static List<Cuenta> JsonToCuentas(String respuesta) {
+	public static Cuenta JsonToCuentas(String respuesta) {
 		
-		List<Cuenta> lstResultado = new ArrayList<>();
+		Cuenta resultado = null;
 		
-		JSONArray jsonA = new JSONArray(respuesta);
+		JSONObject jsonA = new JSONObject(respuesta);
+	
+		resultado = JsonToCuenta(jsonA);
 		
-		for(int i= 0; i<jsonA.length(); i++) {
-			
-			JSONObject jsonO = jsonA.getJSONObject(i);
-			
-			Cuenta c = JsonToCuenta(jsonO);
-					
-			lstResultado.add(c);
-			
-		}
-		
-		return lstResultado;
+		return resultado;
 	}
 
 	private static Cuenta JsonToCuenta(JSONObject jsonO) {
@@ -115,15 +107,9 @@ public class LogFeriapp {
 		
 		String nombreCuenta = null;
 		
-		JSONArray jsonA = new JSONArray(respuesta);
-		
-		for(int i= 0; i<jsonA.length(); i++) {
+		JSONObject jsonA = new JSONObject(respuesta);
 			
-			JSONObject jsonO = jsonA.getJSONObject(i);
-			
-			nombreCuenta = JsonToComprobarCuentas(jsonO);
-					
-		}
+		nombreCuenta = JsonToComprobarCuentas(jsonA);
 		
 		return nombreCuenta;
 	}
@@ -201,7 +187,7 @@ public class LogFeriapp {
 	public static void subirImagen(String ruta) {
 	try {	
 		String filePath = ContPerfil.archivo.getAbsolutePath();
-		String fileName = ""+ContLogueo.lstCuentas.get(0).getIdCuenta();
+		String fileName = ""+ContLogueo.lstCuentas.getIdCuenta();
 		String fileNameWithOutExt = fileName.replaceFirst("[.][^.]+$", "");
 		
 		//Establecer conexion...
@@ -319,6 +305,16 @@ public class LogFeriapp {
 			error(e.getMessage());
 		}
 		return listado;
+	}
+
+	public static Caseta JsonToCasetas2(String respuesta) {
+		Caseta lstResultado;
+		
+		JSONObject jsonA = new JSONObject(respuesta);
+			
+		lstResultado = JsonToCaseta(jsonA);
+					
+		return lstResultado;
 	}
 	
 
