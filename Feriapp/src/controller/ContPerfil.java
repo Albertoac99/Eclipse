@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,14 @@ public class ContPerfil {
 			Perfil.lblFotoPerfil.setIcon(new ImageIcon(image.getScaledInstance(114, 113, Image.SCALE_SMOOTH)));
 
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
+			File imagen = new File("img\\silueta.jpg");
+			Image image = null;
+			try {
+				image = ImageIO.read(imagen);
+			} catch (IOException e1) {
+				LogFeriapp.error(e1.getMessage());
+			}
+			Perfil.lblFotoPerfil.setIcon(new ImageIcon(image.getScaledInstance(114, 113, Image.SCALE_SMOOTH)));
 		}
 
 	}
