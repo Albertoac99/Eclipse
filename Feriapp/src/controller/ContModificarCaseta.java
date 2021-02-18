@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 
 import logic.LogFeriapp;
 import view.AdminCasetas;
-import view.CrearCaseta;
 import view.ModificarCaseta;
 
 public class ContModificarCaseta {

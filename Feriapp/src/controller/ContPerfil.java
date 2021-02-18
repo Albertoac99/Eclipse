@@ -73,7 +73,6 @@ public class ContPerfil {
 	}
 
 	public static void guardarCambios() {
-		List<Cuenta> nuevaCuenta = new ArrayList<>();
 		
 		String usuarioNuevo = Perfil.txtNuevoUsuario.getText().toString();
 		String contraseniaNueva = Perfil.txtNuevaContraseña.getText().toString();

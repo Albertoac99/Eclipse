@@ -8,10 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.ContAdminCasetas;
-import controller.ContLogueo;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.JScrollPane;

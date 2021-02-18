@@ -6,7 +6,6 @@ import javax.swing.table.DefaultTableModel;
 
 import logic.LogFeriapp;
 import model.Caseta;
-import sun.java2d.Disposer;
 import utils.GUI;
 import view.AdminCasetas;
 
