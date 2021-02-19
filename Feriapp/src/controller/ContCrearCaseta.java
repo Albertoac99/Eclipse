@@ -90,7 +90,6 @@ public class ContCrearCaseta {
 		Caseta casetasNumero;
 		
 		String urlNumero = "https://arandacastroalberto.000webhostapp.com/php/getCasetaNumero.php?numeroCaseta="+numeroCaseta;
-		System.out.println("EEEEEEEEEEEEE");
 		try {
 			respuesta = LogFeriapp.peticionHttp(urlNumero);
 			casetasNumero = LogFeriapp.JsonToCasetas2(respuesta);
